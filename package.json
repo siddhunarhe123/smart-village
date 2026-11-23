@@ -1,5 +1,5 @@
 {
-  "name": "smart-village-digital-platform",
+  "name": "smart-village",
   "version": "1.0.0",
   "description": "Smart Village Digital Platform (ग्रामपंचायत शिवनेरी) - E-Governance & Rural Empowerment Portal",
   "main": "index.html",
@@ -10,6 +10,10 @@
     "maharashtra",
     "civic-tech"
   ],
-  "author": "Smart Village Team",
+  "author": "Siddhesh Narhe (siddhunarhe123)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siddhunarhe123/smart-village.git"
+  },
   "license": "MIT"
 }
