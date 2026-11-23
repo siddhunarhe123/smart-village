@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Forms & Documents | ग्रामपंचायत अधिकृत दाखले व प्रपत्र | शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | आपले सरकार सेवा</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="formsHeaderTitle">ग्रामपंचायत अधिकृत दाखले व प्रपत्र दालन</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">ग्रामपंचायत शिवनेरी, ता. जुन्नर, जि. पुणे</div>
+        </div>
+      </div>
+      <a href="citizen-login.html" class="btn btn-outline-primary btn-sm fw-semibold" data-i18n="navCitizenLogin">
+        <i class="bi bi-person-circle me-1"></i>नागरिक लॉगिन
+      </a>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #0f3d64 0%, #155286 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="formsBannerTitle">दाखले, नमुने व अधिकृत अर्जांची ऑनलाईन सुविधा</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="formsBannerSubtitle">नागरिकांना कार्यालयात न जाता सर्व आवश्यक कायदेशीर दाखल्यांचे नमुने डाऊनलोड व प्रिंट करण्यासाठी उपलब्ध.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <input type="text" id="formSearchInput" class="form-control" data-i18n-placeholder="searchFormsPlaceholder" placeholder="दाखल्याचे नाव किंवा नमुना कोड शोधा..." onkeyup="filterForms()">
+        </div>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <span class="badge bg-success-subtle text-success p-2">
+          <i class="bi bi-printer me-1"></i><span data-i18n="formsBannerSubtitle">सर्व दाखले शासकीय लेटरहेड व शिक्क्यानिशी प्रिंट करता येतात</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row g-4" id="formsCardsContainer">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="formsHeaderTitle">अधिकृत दाखले व अर्ज कक्ष</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderAllForms();
+    });
+
+    window.addEventListener("languageChanged", function () {
+      renderAllForms();
+    });
+
+    function filterForms() {
+      const q = document.getElementById("formSearchInput").value.trim().toLowerCase();
+      let forms = window.villageDB.getForms();
+      if (q) {
+        forms = forms.filter(f => 
+          f.titleMr.toLowerCase().includes(q) ||
+          f.titleEn.toLowerCase().includes(q) ||
+          (f.titleHi && f.titleHi.toLowerCase().includes(q)) ||
+          f.code.toLowerCase().includes(q) ||
+          f.department.toLowerCase().includes(q)
+        );
+      }
+      renderFormsList(forms);
+    }
+
+    function renderAllForms() {
+      const forms = window.villageDB.getForms();
+      renderFormsList(forms);
+    }
+
+    function renderFormsList(forms) {
+      const container = document.getElementById("formsCardsContainer");
+      if (!container) return;
+
+      if (forms.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center py-5 text-muted"><p>${window.getLang() === 'en' ? 'No forms found.' : (window.getLang() === 'hi' ? 'कोई प्रपत्र नहीं मिला।' : 'कोणताही अर्ज आढळला नाही.')}</p></div>`;
+        return;
+      }
+
+      const feeLabel = window.t('feeLabel');
+      const timeLabel = window.t('timeLabel');
+      const docsLabel = window.t('docsLabel');
+      const printBtnText = window.t('btnPrintOfficialForm');
+
+      container.innerHTML = forms.map(f => {
+        const title = window.tData(f, 'title');
+        const desc = window.tData(f, 'description') || f.description;
+
+        return `
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border rounded-4 shadow-sm p-4 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary-subtle text-primary fw-bold">${f.code}</span>
+                <span class="badge bg-warning-subtle text-dark border">${feeLabel} ${f.fee}</span>
+              </div>
+              <h5 class="fw-bold text-dark mb-2">${title}</h5>
+              <div class="small text-muted mb-2"><i class="bi bi-building me-1"></i>${f.department}</div>
+              
+              <p class="small text-secondary mb-3 flex-grow-1">${desc}</p>
+
+              <div class="p-2 bg-light rounded-3 border small mb-3">
+                <div><strong>${timeLabel}</strong> ${f.processingTime}</div>
+                <div><strong>${docsLabel}</strong> ${f.requiredDocs}</div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-success btn-sm flex-grow-1 fw-bold" onclick="printCertificate('${f.code}', '${title}')">
+                  <i class="bi bi-printer me-1"></i>${printBtnText}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function printCertificate(code, title) {
+      const citizen = window.villageApp.getCurrentCitizen();
+      const citizenName = citizen ? citizen.name : "सुरेश आनंदराव देशमुख (नागरिक)";
+      const citizenAadhaar = citizen ? citizen.aadhaar : "XXXX-XXXX-9012";
+      const citizenWard = citizen ? citizen.ward : "Ward 2 (Kisan Galli)";
+
+      const printWin = window.open('', '_blank', 'width=800,height=900');
+      printWin.document.write(`
+        <html>
+        <head>
+          <title>${title} - ${code}</title>
+          <style>
+            body { font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif; padding: 40px; color: #1e293b; }
+            .header { text-align: center; border-bottom: 3px double #155286; padding-bottom: 15px; margin-bottom: 25px; }
+            .title { font-size: 20px; font-weight: bold; color: #155286; margin-top: 5px; }
+            .sub { font-size: 13px; color: #475569; }
+            .cert-box { border: 2px solid #cbd5e1; padding: 25px; border-radius: 8px; line-height: 2; font-size: 15px; }
+            .footer-sig { display: flex; justify-content: space-between; margin-top: 60px; }
+            .sig-block { text-align: center; font-size: 13px; }
+            .stamp { border: 2px dashed #b91c1c; color: #b91c1c; font-weight: bold; padding: 8px 15px; border-radius: 6px; display: inline-block; transform: rotate(-5deg); margin-top: 10px; }
+            @media print { .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 20px;">
+            <button onclick="window.print()" style="padding: 10px 20px; background: #155286; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+              प्रिंट करा (Print Form)
+            </button>
+          </div>
+          <div class="header">
+            <div style="font-size: 24px; font-weight: 800; color: #155286;">महाराष्ट्र शासन | ग्रामपंचायत शिवनेरी</div>
+            <div class="sub">ता. जुन्नर, जि. पुणे | पिन: ४१०५०२ | ईमेल: contact@shivneri-grampanchayat.gov.in</div>
+            <div class="title">${title} (${code})</div>
+          </div>
+          <div class="cert-box">
+            <p>याद्वारे प्रमाणित करण्यात येते की, श्री./श्रीमती <strong>${citizenName}</strong>, आधार क्रमांक: <strong>${citizenAadhaar}</strong>, रा. <strong>${citizenWard}</strong>, ग्रामपंचायत शिवनेरी, ता. जुन्नर, जि. पुणे येथील अधिकृत स्थानिक रहिवासी आहेत.</p>
+            <p>त्यांच्या अधिकृत मागणीनुसार आणि ग्रामपंचायत अभिलेखांची कायदेशीर तपासणी करून हे अधिकृत प्रपत्र डिजिटल प्रमाणपत्रासह जारी करण्यात येत आहे.</p>
+            <p><strong>प्रपत्र संदर्भ क्रमांक:</strong> GP-SHV/${code}/${new Date().getFullYear()}/${Math.floor(1000 + Math.random() * 9000)}<br>
+            <strong>दिनांक:</strong> ${new Date().toLocaleDateString('mr-IN')}</p>
+          </div>
+          <div class="footer-sig">
+            <div class="sig-block">
+              <div class="stamp">डिजिटल स्वाक्षरीत / Verified</div><br><br>
+              <strong>संगणक ऑपरेटर</strong><br>आपले सरकार केंद्र, शिवनेरी
+            </div>
+            <div class="sig-block">
+              <br><br><br>
+              <strong>ग्रामसेवक / ग्रामविकास अधिकारी</strong><br>ग्रामपंचायत शिवनेरी, ता. जुन्नर
+            </div>
+            <div class="sig-block">
+              <br><br><br>
+              <strong>सरपंच / उपसरपंच</strong><br>ग्रामपंचायत शिवनेरी, ता. जुन्नर
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWin.document.close();
+    }
+  </script>
+</body>
+</html>

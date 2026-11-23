@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Village Digital Platform | ग्रामपंचायत शिवनेरी</title>
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Indian National Tricolor Ribbon -->
+  <div class="tricolor-bar"></div>
+
+  <!-- 2. Top Accessibility & Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <span class="d-none d-md-inline" data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | ग्रामविकास व पंचायतराज विभाग</span>
+        <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1" data-i18n="livePortalBadge"><i class="bi bi-broadcast me-1"></i>Live Portal 2026</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <!-- Emergency Ticker Link -->
+        <a href="#emergencySection" class="text-warning fw-semibold text-decoration-none">
+          <i class="bi bi-telephone-fill me-1"></i><span data-i18n="emergencyQuickCall">तातडीची मदत: १०८ / ११२</span>
+        </a>
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate me-1"></i><span id="currentLangDisplay">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="#" data-lang="mr">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="#" data-lang="en">English</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Official Government Brand Header -->
+  <header class="gov-brand-header">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="National Emblem of India" class="gov-logo-img">
+        <div>
+          <h1 class="gov-portal-title m-0" data-i18n="smartGramPortal">स्मार्ट ग्राम डिजिटल मंच</h1>
+          <div class="gov-portal-subtitle">
+            <i class="bi bi-geo-alt-fill text-danger me-1"></i><span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>, <span data-i18n="talukaDist">ता. जुन्नर, जि. पुणे</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge-iso d-none d-lg-inline-block" data-i18n="isoBadge">
+          <i class="bi bi-award-fill me-1"></i>ISO 9001:2015 Smart Village
+        </span>
+        <div class="btn-group">
+          <a href="citizen-login.html" class="btn btn-outline-success btn-sm px-3 fw-semibold">
+            <i class="bi bi-person-fill me-1"></i><span data-i18n="navCitizenLogin">नागरिक लॉगिन</span>
+          </a>
+          <a href="admin-login.html" class="btn btn-primary btn-sm px-3 fw-semibold" style="background-color: var(--gov-primary); border-color: var(--gov-primary);">
+            <i class="bi bi-shield-lock-fill me-1"></i><span data-i18n="navAdminLogin">प्रशासकीय लॉगिन</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. Main Navigation Bar -->
+  <nav class="navbar navbar-expand-lg gov-navbar sticky-top">
+    <div class="container">
+      <button class="navbar-toggler text-white border-0 py-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html"><i class="bi bi-house-door-fill me-1"></i><span data-i18n="navHome">मुख्यपृष्ठ</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-grid-fill me-1"></i><span data-i18n="navServices">स्थानिक सेवा</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="services-agri.html"><i class="bi bi-flower1 me-2 text-success"></i><span data-i18n="navAgriculture">कृषी व हवामान (Krishi)</span></a></li>
+              <li><a class="dropdown-item" href="services-health.html"><i class="bi bi-heart-pulse-fill me-2 text-danger"></i><span data-i18n="navHealth">आरोग्य व केंद्र (PHC)</span></a></li>
+              <li><a class="dropdown-item" href="services-education.html"><i class="bi bi-book-half me-2 text-primary"></i><span data-i18n="navEducation">शिक्षण व वाचनालय</span></a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="schemes.html"><i class="bi bi-journal-bookmark-fill me-1"></i><span data-i18n="navSchemes">शासकीय योजना</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="notices.html"><i class="bi bi-megaphone-fill me-1"></i><span data-i18n="navNotices">नोटीस फलक</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="complaints.html"><i class="bi bi-chat-left-dots-fill me-1"></i><span data-i18n="navComplaints">तक्रार निवारण</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="marketplace.html"><i class="bi bi-shop me-1"></i><span data-i18n="navMarketplace">शेतकरी बाजार</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forms.html"><i class="bi bi-file-earmark-arrow-down-fill me-1"></i><span data-i18n="navForms">दाखले व अर्ज</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="village-stats.html"><i class="bi bi-graph-up-arrow me-1"></i><span data-i18n="navStats">ग्राम आकडेवारी</span></a>
+          </li>
+        </ul>
+
+        <!-- Quick 1-Click Demo Logins for Viva -->
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-warning btn-sm fw-bold shadow-sm" onclick="window.villageApp.quickCitizenLogin()" title="1-Click Citizen Demo Login">
+            <i class="bi bi-person-check-fill me-1"></i>Demo Citizen
+          </button>
+          <button class="btn btn-light btn-sm fw-bold shadow-sm" onclick="window.villageApp.quickAdminLogin()" title="1-Click Admin Demo Login">
+            <i class="bi bi-shield-check me-1"></i>Demo Admin
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 5. Live Announcements Ticker -->
+  <div class="announcement-ticker">
+    <div class="container d-flex align-items-center">
+      <span class="ticker-label me-3 d-flex align-items-center" data-i18n="urgentAnnouncementsLabel">
+        <i class="bi bi-bell-fill me-1"></i>महत्त्वाचे
+      </span>
+      <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" class="text-secondary fw-semibold small" id="homeTickerNotice" data-i18n="tickerNoticeText">
+        📢 गुरुवार दि. २६ नोव्हेंबर २०२६ रोजी सकाळी १०:३० वाजता ग्रामपंचायत सभागृहात विशेष ग्रामसभेचे आयोजन | 🚰 रविवार २३ नोव्हेंबर: पाण्याच्या टाक्यांच्या स्वच्छतेसाठी पाणीपुरवठा बंद राहील | 🌾 रब्बी पीक विमा भरण्याची अंतिम मुदत १५ डिसेंबर २०२६ | 💉 राष्ट्रीय पल्स पोलिओ मोहीम रविवार रोजी सर्व केंद्रांवर!
+      </marquee>
+    </div>
+  </div>
+
+  <!-- 6. Hero Banner Section -->
+  <section class="hero-banner">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="hero-pill-badge">
+            <i class="bi bi-award-fill me-1 text-warning"></i><span data-i18n="heroBadge">आदर्श स्मार्ट ग्राम प्रकल्प २०२६</span>
+          </div>
+          <h2 class="hero-title" data-i18n="heroTitle">शिवनेरी डिजिटल ग्रामपंचायतीमध्ये आपले सहर्ष स्वागत</h2>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">
+            पारदर्शक ग्राम कारभार, ऑनलाईन तक्रार निवारण, कृषी मार्गदर्शन, सरकारी योजना आणि स्थानिक शेतकरी बाजार - सर्व सुविधा एकाच डिजिटल मंचावर.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="complaints.html" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow">
+              <i class="bi bi-pencil-square me-2"></i><span data-i18n="btnSubmitComplaint">नवीन तक्रार नोंदवा</span>
+            </a>
+            <button class="btn btn-outline-light btn-lg px-4 py-2 fw-semibold" data-bs-toggle="modal" data-bs-target="#trackComplaintModal">
+              <i class="bi bi-search me-2"></i><span data-i18n="btnTrackComplaint">तक्रारीची स्थिती तपासा</span>
+            </button>
+            <a href="schemes.html" class="btn btn-success btn-lg px-4 py-2 fw-semibold shadow-sm" style="background-color: #2e7d32; border-color: #2e7d32;">
+              <i class="bi bi-journal-check me-2"></i><span data-i18n="btnViewSchemes">शासकीय योजना</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sarpanch Message Card -->
+        <div class="col-lg-4 d-none d-lg-block">
+          <div class="card border-0 shadow-lg bg-white text-dark rounded-4 overflow-hidden">
+            <div class="card-header bg-primary text-white py-3" style="background: linear-gradient(135deg, #0f3d64, #1b5e20) !important;">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Sarpanch" class="rounded-circle border border-2 border-white" style="width: 52px; height: 52px; object-fit: cover;">
+                <div>
+                  <h6 class="mb-0 fw-bold" data-i18n="sarpanchName">सौ. सुनिता आ. पाटील</h6>
+                  <small class="text-light opacity-75" data-i18n="sarpanchDesignation">सरपंच, ग्रामपंचायत शिवनेरी</small>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              <p class="small text-muted mb-2 fst-italic" data-i18n="sarpanchQuote">
+                "तंत्रज्ञानाचा वापर करून गावाला स्वयंपूर्ण आणि पारदर्शक बनवणे हाच आमचा ध्यास आहे. गावातील शेवटच्या घटकापर्यंत शासकीय योजना पोहोचवण्यासाठी हा डिजिटल मंच कार्यरत आहे."
+              </p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="badge bg-success-subtle text-success"><i class="bi bi-check-circle-fill me-1"></i><span data-i18n="serviceMotto">जनसेवा हीच ईश्वरसेवा</span></span>
+                <a href="#emergencySection" class="btn btn-sm btn-outline-danger"><i class="bi bi-telephone me-1"></i><span data-i18n="emergencyQuickCall">आपत्कालीन संपर्क</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Key Village Statistics Banner -->
+  <section class="py-4 bg-white border-bottom">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-blue"><i class="bi bi-people-fill"></i></div>
+            <div>
+              <div class="stat-number">4,280</div>
+              <div class="stat-label" data-i18n="statPopulation">एकूण लोकसंख्या</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-green"><i class="bi bi-houses-fill"></i></div>
+            <div>
+              <div class="stat-number">865</div>
+              <div class="stat-label" data-i18n="statHouseholds">नोंदणीकृत कुटुंबे</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-amber"><i class="bi bi-patch-check-fill"></i></div>
+            <div>
+              <div class="stat-number">98%</div>
+              <div class="stat-label" data-i18n="statCleanliness">स्वच्छता निर्देशांक</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-purple"><i class="bi bi-sun-fill"></i></div>
+            <div>
+              <div class="stat-number">140 kW</div>
+              <div class="stat-label" data-i18n="statSolar">सौर ऊर्जा क्षमता</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-blue"><i class="bi bi-droplet-half"></i></div>
+            <div>
+              <div class="stat-number">99.8%</div>
+              <div class="stat-label" data-i18n="statWaterCoverage">नळ जोडणी</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-green"><i class="bi bi-check2-circle"></i></div>
+            <div>
+              <div class="stat-number" id="homeResolvedCount">142</div>
+              <div class="stat-label" data-i18n="statComplaintsResolved">तक्रारी निवारण</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Core Services Shortcuts Grid -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold mb-2">ई-ग्रामपंचायत सुविधा</span>
+        <h2 class="fw-bold" data-i18n="quickServicesTitle">ग्रामपंचायत नागरिक सेवा</h2>
+        <p class="text-muted" data-i18n="quickServicesSubtitle">कार्यालयात न जाता घरबसल्या मिळवा सर्व महत्त्वाच्या शासकीय सेवा व सुविधा</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1. Grievance Redressal -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-chat-square-text-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceGrievance">तक्रार नोंदणी व निवारण</h5>
+            <p class="service-card-text" data-i18n="serviceGrievanceDesc">पाणीपुरवठा, सांडपाणी, रस्ते व वीज दिव्यांच्या तक्रारी फोटोसह नोंदवा व मागोवा घ्या.</p>
+            <div class="mt-auto d-flex gap-2">
+              <a href="complaints.html" class="btn btn-outline-primary btn-sm flex-grow-1"><i class="bi bi-plus-circle me-1"></i><span data-i18n="btnRegisterComplaint">नोंदणी करा</span></a>
+              <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#trackComplaintModal"><i class="bi bi-search"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Govt Schemes -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-award-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceSchemes">शासकीय योजना</h5>
+            <p class="service-card-text" data-i18n="serviceSchemesDesc">पीएम-किसान, घरकूल योजना, जल जीवन मिशन व राज्य सरकारच्या अनुदानासाठी पात्रता तपासा.</p>
+            <div class="mt-auto">
+              <a href="schemes.html" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-arrow-right-circle me-1"></i><span data-i18n="btnViewAllSchemes">योजनांची यादी पहा</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Notices & Gram Sabha -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-megaphone-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceNotice">नोटीस फलक व ग्रामसभा</h5>
+            <p class="service-card-text" data-i18n="serviceNoticeDesc">ग्रामसभा बैठकांचे इतिवृत्त, पाणीपुरवठा वेळापत्रक व लसीकरण मोहिमांचे ताजे परिपत्रक.</p>
+            <div class="mt-auto">
+              <a href="notices.html" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-eye me-1"></i><span data-i18n="btnViewNotices">सर्व नोटीस वाचा</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Kisan Bazar -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-basket3-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceMarket">शेतकरी बाजार (Kisan Bazar)</h5>
+            <p class="service-card-text" data-i18n="serviceMarketDesc">स्थानिक शेतीमाल, अस्सल बिलोना तूप, गूळ व हस्तकला थेट ग्राहकांशी जोडून विक्री करा.</p>
+            <div class="mt-auto">
+              <a href="marketplace.html" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-cart3 me-1"></i><span data-i18n="btnOpenMarket">बाजारपेठ उघडा</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Health & PHC -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceHealth">आरोग्य व दवाखाना</h5>
+            <p class="service-card-text" data-i18n="serviceHealthDesc">प्राथमिक आरोग्य केंद्र (PHC) डॉक्टरांचे वेळापत्रक, मोफत औषधे व १०८ रुग्णवाहिका मदत.</p>
+            <div class="mt-auto">
+              <a href="services-health.html" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-hospital me-1"></i><span data-i18n="btnViewHealth">आरोग्य सेवा पहा</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Forms & Certificates -->
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-card-icon"><i class="bi bi-file-earmark-pdf-fill"></i></div>
+            <h5 class="service-card-title" data-i18n="serviceForms">दाखले व अर्ज डाउनलोड</h5>
+            <p class="service-card-text" data-i18n="serviceFormsDesc">नमुना ८ घरपट्टी उतारा, जन्म-मृत्यू दाखला अर्ज व ना हरकत प्रमाणपत्र (NOC) डाउनलोड करा.</p>
+            <div class="mt-auto">
+              <a href="forms.html" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download me-1"></i><span data-i18n="btnGetForms">अर्ज व दाखले मिळवा</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Featured Schemes Showcase -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+        <div>
+          <span class="badge bg-primary-subtle text-primary px-3 py-1 rounded-pill fw-semibold mb-2" data-i18n="schemesHeaderTitle">शासकीय जनकल्याण</span>
+          <h2 class="fw-bold mb-1" data-i18n="schemesBannerTitle">प्रमुख शासकीय योजना</h2>
+          <p class="text-muted mb-0" data-i18n="schemesBannerSubtitle">गावातील नागरिकांसाठी केंद्र व राज्य सरकारच्या विविध योजनांची माहिती व पात्रता</p>
+        </div>
+        <a href="schemes.html" class="btn btn-outline-primary fw-semibold mt-3 mt-md-0">
+          <span data-i18n="btnViewAllSchemes">सर्व योजना पहा</span> <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div class="row g-4" id="homeSchemesContainer">
+        <!-- Rendered dynamically by JS from seed data -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Local Marketplace Preview (Accurate images: Laptop, Vegetables, Mango, Ghee) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+        <div>
+          <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-semibold mb-2" data-i18n="marketHeaderTitle">स्थानिक शेतकरी मंच</span>
+          <h2 class="fw-bold mb-1" data-i18n="marketBannerTitle">शेतकरी बाजार (ताज्या नोंदी)</h2>
+          <p class="text-muted mb-0" data-i18n="marketBannerSubtitle">मध्यस्थांशिवाय थेट स्थानिक शेतकऱ्यांकडून सेंद्रिय धान्य, फळे व उत्पादने खरेदी करा</p>
+        </div>
+        <a href="marketplace.html" class="btn btn-outline-success fw-semibold mt-3 mt-md-0">
+          <span data-i18n="btnViewAllProducts">सर्व उत्पादने पहा</span> <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div class="row g-4" id="homeMarketplaceContainer">
+        <!-- Rendered dynamically by JS with 100% title-matched photos -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Planned Smart Innovations Showcase (College PPT Scope) -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge bg-dark-subtle text-dark px-3 py-2 rounded-pill fw-semibold mb-2">AI & Data Science Design Thinking Project</span>
+        <h2 class="fw-bold">भविष्यातील प्रगत स्मार्ट ग्राम संकल्पना (Planned Innovations)</h2>
+        <p class="text-muted">दुसऱ्या वर्षाच्या AI & DS अभियांत्रिकी प्रकल्पाचा विस्तार आणि नियोजित वैशिष्ट्ये</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle bg-success text-white d-inline-flex p-3 mb-3 fs-2 shadow-sm">
+              <i class="bi bi-robot"></i>
+            </div>
+            <h5 class="fw-bold">AI ग्राम मित्र (Voice & Chatbot)</h5>
+            <p class="small text-muted mb-3">ग्रामीण नागरिकांसाठी स्थानिक बोलीभाषेत (मराठी/हिंदी/इंग्रजी) शासकीय योजना व दाखल्यांची माहिती देणारा जनरेटिव्ह AI असिस्टंट.</p>
+            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+              <i class="bi bi-chat-dots me-1"></i>AI प्रोटोटाईप तपासा
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle bg-primary text-white d-inline-flex p-3 mb-3 fs-2 shadow-sm">
+              <i class="bi bi-map"></i>
+            </div>
+            <h5 class="fw-bold">GIS ग्राम नकाशा (Geographic Mapping)</h5>
+            <p class="small text-muted mb-3">गावातील रस्ते, वॉर्ड सीमा, पाण्याचे स्रोत, स्ट्रीट लाईट पोल आणि शेतजमिनींचे सॅटेलाईट मॅपिंग व जिओ-टॅगिंग प्रणाली.</p>
+            <span class="badge bg-secondary-subtle text-secondary border px-3 py-1">नियोजित वैशिष्ट्य (Planned)</span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <div class="rounded-circle bg-warning text-dark d-inline-flex p-3 mb-3 fs-2 shadow-sm">
+              <i class="bi bi-cpu"></i>
+            </div>
+            <h5 class="fw-bold">IoT स्मार्ट वॉटर व सोलर मॉनिटरिंग</h5>
+            <p class="small text-muted mb-3">पाण्याच्या टाकीतील पातळी सेन्सर्स, जलशुद्धता TDS मीटर आणि सोलर पॅनलच्या वीज निर्मितीचे रिअल-टाइम आयओटी डॅशबोर्ड.</p>
+            <span class="badge bg-secondary-subtle text-secondary border px-3 py-1">हार्डवेअर इंटिग्रेशन स्कोप</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Emergency Directory Quick Contact Section -->
+  <section class="py-5" id="emergencySection" style="background-color: #fff1f2;">
+    <div class="container">
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <div class="bg-danger text-white p-3 rounded-circle fs-3 shadow-sm">
+          <i class="bi bi-telephone-inbound-fill"></i>
+        </div>
+        <div>
+          <h3 class="fw-bold text-danger mb-0" data-i18n="emergencyQuickCall">आणीबाणी संपर्क सेवा (Emergency Helplines)</h3>
+          <p class="text-muted mb-0">कोणत्याही संकटकालीन प्रसंगी त्वरित संपर्क साधा (२४ तास उपलब्ध)</p>
+        </div>
+      </div>
+
+      <div class="row g-3" id="homeEmergencyContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Official Portal Footer -->
+  <footer class="gov-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" style="width: 36px; filter: brightness(0) invert(1);">
+            <h5 class="text-white fw-bold mb-0" data-i18n="villageName">ग्रामपंचायत शिवनेरी</h5>
+          </div>
+          <p class="small opacity-75" data-i18n="tagline">
+            स्मार्ट ग्राम डिजिटल मंच: ग्रामीण विकास व पंचायतराज विभाग, महाराष्ट्र शासन यांच्या मार्गदर्शक तत्त्वांवर आधारित विकसित सुशासन पोर्टल.
+          </p>
+          <p class="small mb-1"><i class="bi bi-geo-alt-fill text-warning me-2"></i>ग्रामपंचायत कार्यालय, मेन रोड, मु. पो. शिवनेरी, ता. जुन्नर, जि. पुणे - ४१०५०२</p>
+          <p class="small mb-1"><i class="bi bi-envelope-fill text-warning me-2"></i>grampanchayat.shivneri@gov.in</p>
+          <p class="small"><i class="bi bi-telephone-fill text-warning me-2"></i>कार्यालय फोन: ०२१३२-२४५१००</p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3" data-i18n="navServices">महत्त्वाच्या लिंक्स</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="schemes.html" data-i18n="navSchemes">शासकीय योजना</a></li>
+            <li class="mb-2"><a href="complaints.html" data-i18n="navComplaints">तक्रार नोंदणी</a></li>
+            <li class="mb-2"><a href="notices.html" data-i18n="navNotices">नोटीस फलक</a></li>
+            <li class="mb-2"><a href="marketplace.html" data-i18n="navMarketplace">शेतकरी बाजार</a></li>
+            <li class="mb-2"><a href="forms.html" data-i18n="navForms">दाखले व प्रपत्र</a></li>
+            <li class="mb-2"><a href="village-stats.html" data-i18n="navStats">ग्राम आकडेवारी</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3">सरकारी पोर्टल्स</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="https://aaplesarkar.mahaonline.gov.in" target="_blank" rel="noopener">आपले सरकार</a></li>
+            <li class="mb-2"><a href="https://pmkisan.gov.in" target="_blank" rel="noopener">पीएम किसान</a></li>
+            <li class="mb-2"><a href="https://pmayg.nic.in" target="_blank" rel="noopener">पीएम आवास (ग्रामीण)</a></li>
+            <li class="mb-2"><a href="https://mahadbt.maharashtra.gov.in" target="_blank" rel="noopener">महाडीबीटी शेतकरी पोर्टल</a></li>
+            <li class="mb-2"><a href="https://jaljeevanmission.gov.in" target="_blank" rel="noopener">जल जीवन मिशन</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h6 class="text-white fw-bold mb-3">प्रकल्प माहिती</h6>
+          <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small">
+            <div class="fw-semibold text-warning mb-1"><i class="bi bi-code-slash me-1"></i>Second Year AI & DS Engineering Project</div>
+            <div class="text-light opacity-75">विषय: Design Thinking Project (स्मार्ट ग्राम डिजिटल मंच)</div>
+            <div class="text-light opacity-75 mt-1">उद्दिष्ट: ग्रामस्थांना पारदर्शक सरकारी सेवा, तक्रार निवारण आणि शेतकरी बाजारपेठ एकाच प्लॅटफॉर्मवर देणे.</div>
+            <div class="badge bg-success-subtle text-success mt-2">प्रस्तुतीसाठी सज्ज (Presentation Ready)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gov-footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+        <div data-i18n="copyrightText">&copy; 2026 ग्रामपंचायत शिवनेरी. सर्व हक्क सुरक्षित.</div>
+        <div class="mt-2 mt-md-0 text-muted" data-i18n="demoDataNotice">
+          कॉलेज डिझाईन थिंकिंग प्रकल्पाच्या सादरीकरणासाठी वास्तववादी नमुना माहिती
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Gram Mitra AI Chatbot Button -->
+  <div class="floating-chatbot-btn shadow-lg" data-bs-toggle="modal" data-bs-target="#chatbotModal" title="ग्राम मित्र AI सहाय्यकाशी बोला">
+    <i class="bi bi-chat-dots-fill"></i>
+    <span class="chatbot-pulse"></span>
+  </div>
+
+  <!-- Track Complaint Modal -->
+  <div class="modal fade" id="trackComplaintModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="bi bi-search me-2"></i><span data-i18n="complaintStatusCheckTitle">तक्रारीची स्थिती तपासा</span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <label class="form-label fw-semibold" data-i18n="complaintStatusCheckSubtitle">तक्रार क्रमांक (Complaint ID):</label>
+          <div class="input-group mb-3">
+            <input type="text" id="quickTrackInput" class="form-control" placeholder="उदा. CMP-2026-1001" value="CMP-2026-1001">
+            <button class="btn btn-primary" type="button" onclick="quickTrackComplaint()">
+              <span data-i18n="btnSearch">शोधा</span> <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+          <div id="quickTrackResult" class="mt-3">
+            <!-- Search result timeline will appear here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gram Mitra AI Chatbot Modal -->
+  <div class="modal fade" id="chatbotModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg overflow-hidden">
+        <div class="modal-header bg-success text-white py-3">
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-white text-success p-2 fs-5">
+              <i class="bi bi-robot"></i>
+            </div>
+            <div>
+              <h5 class="modal-title mb-0 fw-bold">ग्राम मित्र (Gram Mitra) AI Assistant</h5>
+              <small class="text-white-50">आपला २४x७ डिजिटल ग्रामपंचायत सहाय्यक</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="chatMessages" class="p-4" style="height: 380px; overflow-y: auto; background-color: #f8fafc;">
+            <div class="d-flex gap-2 mb-3">
+              <div class="rounded-circle bg-success text-white p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                <i class="bi bi-robot"></i>
+              </div>
+              <div class="p-3 bg-white rounded-3 shadow-sm border max-w-75">
+                <p class="mb-0 small">
+                  <strong>नमस्ते! 🙏</strong> मी 'ग्राम मित्र' AI सहाय्यक आहे. मी आपल्याला ग्रामपंचायतीच्या सेवा, तक्रार नोंदणी, ७/१२ किंवा नमुना ८ दाखले, शासकीय योजना आणि शेतकरी बाजाराबद्दल माहिती देऊ शकतो. खालीलपैकी एका पर्यायावर क्लिक करा किंवा आपला प्रश्न लिहा:
+                </p>
+                <div class="mt-2 d-flex flex-wrap gap-1">
+                  <button class="btn btn-outline-success btn-sm py-0 px-2 small" onclick="sendChatPrompt('नमुना ८ घरपट्टी कशी मिळेल?')">नमुना ८ कसा मिळवायचा?</button>
+                  <button class="btn btn-outline-success btn-sm py-0 px-2 small" onclick="sendChatPrompt('पीएम किसान योजनेचे ६००० कसे मिळतील?')">पीएम किसान योजना</button>
+                  <button class="btn btn-outline-success btn-sm py-0 px-2 small" onclick="sendChatPrompt('पाण्याची पाईपलाईन फुटली आहे तक्रार')">पाणी गळती तक्रार</button>
+                  <button class="btn btn-outline-success btn-sm py-0 px-2 small" onclick="sendChatPrompt('प्राथमिक आरोग्य केंद्र डॉक्टर वेळ')">दवाखाना व डॉक्टर</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-3 bg-white border-top">
+            <div class="input-group">
+              <input type="text" id="chatInput" class="form-control" placeholder="येथे आपला प्रश्न विचारा... (मराठी, हिंदी किंवा इंग्रजीत)" onkeypress="if(event.key === 'Enter') submitChat();">
+              <button class="btn btn-success" type="button" onclick="submitChat()">
+                <i class="bi bi-send-fill me-1"></i><span data-i18n="formComplaintSubmitBtn">पाठवा</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderHomeSchemes();
+      renderHomeMarketplace();
+      renderHomeEmergency();
+
+      window.addEventListener("languageChanged", function () {
+        renderHomeSchemes();
+        renderHomeMarketplace();
+        renderHomeEmergency();
+      });
+    });
+
+    function renderHomeSchemes() {
+      const container = document.getElementById("homeSchemesContainer");
+      if (!container) return;
+      const schemes = window.villageDB.getSchemes().slice(0, 3);
+      
+      container.innerHTML = schemes.map(s => {
+        const title = window.tData(s, 'title');
+        const desc = window.tData(s, 'description');
+        const btnDetails = window.t('viewDetails');
+
+        return `
+          <div class="col-md-4">
+            <div class="card h-100 border shadow-sm rounded-4 overflow-hidden">
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="badge bg-success-subtle text-success fw-semibold px-2 py-1">${window.tCategory(s.category)}</span>
+                  <span class="small text-muted"><i class="bi bi-calendar me-1"></i>${s.deadline}</span>
+                </div>
+                <h5 class="fw-bold text-primary mb-2">${title}</h5>
+                <div class="badge bg-warning-subtle text-dark p-2 mb-3 text-start small border">
+                  <i class="bi bi-cash-stack me-1 text-warning"></i>${s.financialBenefit}
+                </div>
+                <p class="small text-muted flex-grow-1 text-truncate-3">${desc}</p>
+                <div class="pt-3 border-top d-flex gap-2">
+                  <a href="schemes.html" class="btn btn-outline-primary btn-sm flex-grow-1">${btnDetails}</a>
+                  <a href="${s.officialLink}" target="_blank" rel="noopener" class="btn btn-success btn-sm"><i class="bi bi-box-arrow-up-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderHomeMarketplace() {
+      const container = document.getElementById("homeMarketplaceContainer");
+      if (!container) return;
+      // Show first 4 items including Laptop and Fresh Vegetables
+      const products = window.villageDB.getProducts().slice(0, 4);
+
+      container.innerHTML = products.map(p => {
+        const accurateImg = window.resolveProductImage(p.productNameEn || p.productNameMr, p.category, p.image);
+        const pName = window.tData(p, 'productName');
+        const pDesc = window.tData(p, 'description');
+        const btnContact = window.t('btnContactWhatsApp');
+
+        return `
+          <div class="col-sm-6 col-lg-3">
+            <div class="product-card p-3 d-flex flex-column h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-success-subtle text-success fw-semibold">${window.tCategory(p.category)}</span>
+                <span class="badge bg-light text-secondary border small">${p.sellerWard}</span>
+              </div>
+              <h6 class="fw-bold mb-1 text-primary text-truncate" title="${pName}">${pName}</h6>
+              <div class="small text-muted mb-2"><i class="bi bi-person me-1"></i>${p.sellerName}</div>
+              <div class="product-price mb-2">₹${p.price} <span class="fs-6 text-muted fw-normal">${p.unit}</span></div>
+              <p class="small text-secondary mb-3 flex-grow-1 text-truncate-2" title="${pDesc}">${pDesc}</p>
+              
+              <!-- Product Image placed directly below text and description -->
+              <div class="product-img-wrap mb-3 shadow-sm">
+                <img src="${accurateImg}" alt="${pName}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80'">
+              </div>
+
+              <div class="mt-auto">
+                <a href="https://wa.me/${p.sellerPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I saw your product ' + pName + ' on Smart Village Platform.')}" target="_blank" class="btn btn-sm btn-outline-success w-100 fw-semibold">
+                  <i class="bi bi-whatsapp me-1"></i>${btnContact}
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderHomeEmergency() {
+      const container = document.getElementById("homeEmergencyContainer");
+      if (!container) return;
+      const contacts = window.villageDB.getEmergencyContacts().slice(0, 4);
+
+      container.innerHTML = contacts.map(c => {
+        const role = window.tData(c, 'role');
+        return `
+          <div class="col-sm-6 col-lg-3">
+            <div class="bg-white p-3 rounded-3 border border-danger-subtle shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span class="badge bg-danger-subtle text-danger mb-1">${role}</span>
+                <h6 class="fw-bold mb-1">${c.name}</h6>
+                <div class="small text-muted">${c.timing}</div>
+              </div>
+              <div class="mt-3">
+                <a href="tel:${c.phone}" class="btn btn-danger btn-sm w-100 fw-bold">
+                  <i class="bi bi-telephone-fill me-1"></i>${c.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function quickTrackComplaint() {
+      const input = document.getElementById("quickTrackInput").value.trim();
+      const resultDiv = document.getElementById("quickTrackResult");
+      if (!input) {
+        resultDiv.innerHTML = '<div class="alert alert-warning small">कृपया तक्रार क्रमांक टाका.</div>';
+        return;
+      }
+
+      const complaint = window.villageDB.getComplaintById(input);
+      if (!complaint) {
+        resultDiv.innerHTML = `
+          <div class="alert alert-danger small">
+            <i class="bi bi-exclamation-triangle me-1"></i>Complaint ID '${input}' not found.
+          </div>
+        `;
+        return;
+      }
+
+      const title = window.tData(complaint, 'title');
+      const desc = window.tData(complaint, 'description');
+
+      resultDiv.innerHTML = `
+        <div class="border rounded-3 p-3 bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-bold text-primary">${complaint.id}</span>
+            ${window.villageApp.formatStatusBadge(complaint.status)}
+          </div>
+          <h6 class="fw-bold mb-1">${title}</h6>
+          <p class="small text-muted mb-2">${desc}</p>
+          <div class="small text-secondary mb-3"><i class="bi bi-geo-alt me-1"></i>${complaint.ward} - ${complaint.landmark}</div>
+          
+          <h6 class="small fw-bold text-dark border-bottom pb-1 mb-2">${window.t('trackingTimelineTitle')}</h6>
+          <div class="timeline-track ps-1">
+            ${(complaint.timeline || []).map((t) => `
+              <div class="timeline-step completed">
+                <div class="timeline-icon"><i class="bi bi-check"></i></div>
+                <div class="timeline-content">
+                  <div class="timeline-title">${t.status}</div>
+                  <div class="timeline-time">${t.time}</div>
+                  <div class="timeline-note">${t.note}</div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function sendChatPrompt(promptText) {
+      document.getElementById("chatInput").value = promptText;
+      submitChat();
+    }
+
+    function submitChat() {
+      const input = document.getElementById("chatInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const container = document.getElementById("chatMessages");
+      
+      const userBubble = document.createElement("div");
+      userBubble.className = "d-flex justify-content-end mb-3";
+      userBubble.innerHTML = `
+        <div class="p-3 bg-primary text-white rounded-3 shadow-sm max-w-75">
+          <p class="mb-0 small">${text}</p>
+        </div>
+      `;
+      container.appendChild(userBubble);
+      input.value = "";
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(() => {
+        const response = window.villageApp.askGramMitra(text);
+        const botBubble = document.createElement("div");
+        botBubble.className = "d-flex gap-2 mb-3";
+        botBubble.innerHTML = `
+          <div class="rounded-circle bg-success text-white p-2 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+            <i class="bi bi-robot"></i>
+          </div>
+          <div class="p-3 bg-white rounded-3 shadow-sm border max-w-75">
+            <p class="mb-0 small">${response}</p>
+          </div>
+        `;
+        container.appendChild(botBubble);
+        container.scrollTop = container.scrollHeight;
+      }, 500);
+    }
+  </script>
+</body>
+</html>

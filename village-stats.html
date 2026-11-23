@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Open Data & Statistics | ग्राम आकडेवारी व विकास डॅशबोर्ड | शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | पारदर्शक सुशासन व ओपन डेटा</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="statsHeaderTitle">शिवनेरी ग्राम सांख्यिकी व पारदर्शक डॅशबोर्ड</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">Open Data, Grievance Analytics & Village Key Performance Indicators (KPIs)</div>
+        </div>
+      </div>
+      <button class="btn btn-outline-primary btn-sm fw-bold" onclick="window.print()">
+        <i class="bi bi-printer me-1"></i><span data-i18n="btnPrintReport">अहवाल प्रिंट करा</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #0f3d64 0%, #155286 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="statsBannerTitle">पारदर्शक ग्राम प्रशासन व विकास आकडेवारी</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="statsBannerSubtitle">तक्रार निवारण दर, लोकसंख्या प्रमाण, सौरऊर्जा निर्मिती आणि ग्राम निधी खर्चाचा सविस्तर डिजिटल अहवाल.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    
+    <!-- Top 5 Quick KPI Counters with prominent Red Colour for Pending Grievances -->
+    <div class="row g-3 mb-4">
+      <div class="col-sm-6 col-lg">
+        <div class="stat-card">
+          <div class="stat-icon-box stat-icon-blue"><i class="bi bi-people-fill"></i></div>
+          <div>
+            <div class="stat-number">4,280</div>
+            <div class="stat-label" data-i18n="statPopulation">एकूण लोकसंख्या (साक्षरता ९३.४%)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg">
+        <div class="stat-card">
+          <div class="stat-icon-box stat-icon-green"><i class="bi bi-check2-all"></i></div>
+          <div>
+            <div class="stat-number text-success">९७.९% (142)</div>
+            <div class="stat-label" data-i18n="statComplaintsResolved">तक्रार निवारण दर (Resolution Rate)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg">
+        <div class="stat-card border-danger border-opacity-25 shadow-sm">
+          <div class="stat-icon-box stat-icon-red"><i class="bi bi-exclamation-triangle-fill"></i></div>
+          <div>
+            <div class="stat-number text-danger">३</div>
+            <div class="stat-label text-danger fw-semibold" data-i18n="adminPendingComplaints">प्रलंबित तक्रारी (Pending Action)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg">
+        <div class="stat-card">
+          <div class="stat-icon-box stat-icon-purple"><i class="bi bi-sun-fill"></i></div>
+          <div>
+            <div class="stat-number text-primary">140 kW</div>
+            <div class="stat-label" data-i18n="statSolar">सौर रूफटॉप क्षमता (Clean Energy)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg">
+        <div class="stat-card">
+          <div class="stat-icon-box stat-icon-amber"><i class="bi bi-droplet-fill"></i></div>
+          <div>
+            <div class="stat-number text-warning">९९.८%</div>
+            <div class="stat-label" data-i18n="statWaterCoverage">जल जीवन मिशन (घरगुती नळ)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row 1 -->
+    <div class="row g-4 mb-4">
+      <!-- Chart 1: Grievance Resolution Status -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-pie-chart-fill text-danger me-2"></i><span data-i18n="chartGrievanceStatusTitle">तक्रार निवारण सद्यस्थिती</span></h5>
+            <div class="d-flex align-items-center gap-2">
+              <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-outline-secondary active btn-sm py-0 px-2" id="btnChartDoughnut" onclick="setGrievanceChartType('doughnut')" title="Doughnut View"><i class="bi bi-pie-chart"></i></button>
+                <button type="button" class="btn btn-outline-secondary btn-sm py-0 px-2" id="btnChartBar" onclick="setGrievanceChartType('bar')" title="Bar View"><i class="bi bi-bar-chart"></i></button>
+              </div>
+              <span class="badge bg-danger-subtle text-danger border border-danger-subtle">२०२६ Live</span>
+            </div>
+          </div>
+          <div style="height: 250px; position: relative;" id="complaintChartContainer">
+            <canvas id="complaintStatusChart"></canvas>
+          </div>
+          <!-- Quick Status Summary Badges with Red Color for Pending -->
+          <div class="d-flex justify-content-around text-center pt-3 mt-2 border-top">
+            <div>
+              <span class="badge bg-success rounded-pill px-3 py-1 fs-6">142</span>
+              <div class="small text-muted mt-1" data-i18n="statusResolved">निवारण झाले</div>
+            </div>
+            <div>
+              <span class="badge bg-primary rounded-pill px-3 py-1 fs-6">1</span>
+              <div class="small text-muted mt-1" data-i18n="statusInProgress">काम प्रगतीपथावर</div>
+            </div>
+            <div>
+              <span class="badge bg-warning text-dark rounded-pill px-3 py-1 fs-6">1</span>
+              <div class="small text-muted mt-1" data-i18n="statusUnderReview">पडताळणी सुरू</div>
+            </div>
+            <div>
+              <span class="badge bg-danger rounded-pill px-3 py-1 fs-6">1</span>
+              <div class="small text-danger fw-bold mt-1" data-i18n="statusPendingAction">प्रलंबित कारवाई</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2: Category Breakdown -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-bar-chart-fill text-primary me-2"></i><span data-i18n="chartCategoryTitle">विभागनिहाय प्राप्त तक्रारी</span></h5>
+            <span class="badge bg-light text-muted border" data-i18n="tblColCategory">विभागवार वर्गीकरण</span>
+          </div>
+          <div style="height: 250px; position: relative;" id="categoryChartContainer">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="row g-4 mb-4">
+      <!-- Chart 3: Solar Generation Trend -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-graph-up-arrow text-warning me-2"></i><span data-i18n="chartSolarTitle">मासिक सौर ऊर्जा निर्मिती व ग्रीड निर्यात (Units / kWh)</span></h5>
+            <span class="badge bg-success-subtle text-success">Clean Energy</span>
+          </div>
+          <div style="height: 280px; position: relative;">
+            <canvas id="solarTrendChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 4: Village Demographics -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-person-badge text-info me-2"></i><span data-i18n="chartDemographicsTitle">गावातील व्यवसाय रचना</span></h5>
+          </div>
+          <div style="height: 280px; position: relative;">
+            <canvas id="demographicsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transparency Financial Summary -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold text-dark mb-0"><i class="bi bi-cash-coin text-warning me-2"></i><span data-i18n="financialTransparencyTitle">१५ वा वित्त आयोग व विकास निधी खर्च पारदर्शकता (२०२५-२६)</span></h5>
+        <span class="badge bg-success-subtle text-success" data-i18n="chartAuditComplete">Audit Complete</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle small mb-0">
+          <thead class="table-light">
+            <tr>
+              <th data-i18n="tblColFundName">निधीचे नाव (Fund Name)</th>
+              <th data-i18n="tblColAllocated">मंजूर अनुदान (Allocated)</th>
+              <th data-i18n="tblColUtilized">झालेला खर्च (Utilized)</th>
+              <th data-i18n="tblColBalance">शिल्लक रक्कम (Balance)</th>
+              <th data-i18n="tblColKeyProjects">मुख्य कामे (Key Projects)</th>
+              <th data-i18n="tblColStatus">स्थिती (Status)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold" data-i18n="fund15TiedName">१५ वा केंद्रीय वित्त आयोग (बध्द निधी)</td>
+              <td>₹२४,५०,०००</td>
+              <td>₹२२,८०,०००</td>
+              <td>₹१,७०,०००</td>
+              <td data-i18n="fund15TiedProjects">पाणीपुरवठा पाईपलाईन, क्लोरीन प्लांट व सांडपाणी भूमिगत गटार</td>
+              <td><span class="badge bg-success" data-i18n="status93Percent">९३% पूर्ण</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold" data-i18n="fund15UntiedName">१५ वा वित्त आयोग (अबध्द निधी)</td>
+              <td>₹१६,२०,०००</td>
+              <td>₹१५,१०,०००</td>
+              <td>₹१,१०,०००</td>
+              <td data-i18n="fund15UntiedProjects">शाळा सोलर सिस्टीम, स्ट्रीट लाईट्स व वाचनालय संगणक</td>
+              <td><span class="badge bg-success" data-i18n="status93Percent">९३% पूर्ण</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold" data-i18n="fundSwachhName">स्वच्छ भारत मिशन (ग्रामीण टप्पा २)</td>
+              <td>₹८,००,०००</td>
+              <td>₹७,८५,०००</td>
+              <td>₹१५,०००</td>
+              <td data-i18n="fundSwachhProjects">घनकचरा व्यवस्थापन शेड व घंटागाडी खरेदी</td>
+              <td><span class="badge bg-success" data-i18n="status98Percent">९८% पूर्ण</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold" data-i18n="fundOwnName">ग्रामपंचायत स्वनिधी (घरपट्टी व पाणीपट्टी कर)</td>
+              <td>₹९,४०,०००</td>
+              <td>₹८,२०,०००</td>
+              <td>₹१,२०,०००</td>
+              <td data-i18n="fundOwnProjects">दैनंदिन स्वच्छता कामगार मानधन, विजेची बिले व औषध फवारणी</td>
+              <td><span class="badge bg-primary" data-i18n="status87Percent">८७% पूर्ण</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="statsHeaderTitle">ओपन डेटा व सांख्यिकी कक्ष</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let chart1, chart2, chart3, chart4;
+    let grievanceChartType = "doughnut";
+
+    function setGrievanceChartType(type) {
+      grievanceChartType = type;
+      const btnD = document.getElementById("btnChartDoughnut");
+      const btnB = document.getElementById("btnChartBar");
+      if (btnD && btnB) {
+        if (type === "doughnut") {
+          btnD.classList.add("active");
+          btnB.classList.remove("active");
+        } else {
+          btnB.classList.add("active");
+          btnD.classList.remove("active");
+        }
+      }
+      initCharts();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initCharts();
+    });
+
+    window.addEventListener("languageChanged", function () {
+      initCharts();
+    });
+
+    function initCharts() {
+      const lang = window.getLang ? window.getLang() : "mr";
+
+      // 1. Complaint Status Doughnut / Bar Chart with prominent RED for Pending Action
+      const statusLabels = lang === 'en'
+        ? ["Resolved (142)", "In Progress (1)", "Under Review (1)", "Pending Action (1)"]
+        : (lang === 'hi'
+          ? ["निवारित (142)", "प्रगति पर (1)", "समीक्षाधीन (1)", "लंबित कार्रवाई (1)"]
+          : ["निवारण झाले (142)", "काम प्रगतीपथावर (1)", "पडताळणी सुरू (1)", "प्रलंबित कारवाई (1)"]);
+
+      const statusColors = ["#16a34a", "#0284c7", "#f59e0b", "#dc2626"];
+
+      // If Chart.js library is loaded
+      if (typeof Chart !== "undefined") {
+        if (chart1) chart1.destroy();
+        if (chart2) chart2.destroy();
+        if (chart3) chart3.destroy();
+        if (chart4) chart4.destroy();
+
+        const canvas1 = document.getElementById("complaintStatusChart");
+        if (canvas1) {
+          const ctx1 = canvas1.getContext("2d");
+          if (grievanceChartType === "bar") {
+            chart1 = new Chart(ctx1, {
+              type: "bar",
+              data: {
+                labels: statusLabels,
+                datasets: [{
+                  label: lang === 'en' ? "Grievances" : (lang === 'hi' ? "शिकायतें" : "तक्रारी"),
+                  data: [142, 1, 1, 1],
+                  backgroundColor: statusColors,
+                  borderRadius: 6,
+                  minBarLength: 15
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { display: false },
+                  tooltip: {
+                    callbacks: {
+                      label: function(context) {
+                        return (context.dataset.label || '') + ': ' + context.parsed.y;
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  y: { beginAtZero: true }
+                }
+              }
+            });
+          } else {
+            chart1 = new Chart(ctx1, {
+              type: "doughnut",
+              data: {
+                labels: statusLabels,
+                datasets: [{
+                  data: [142, 1, 1, 1],
+                  backgroundColor: statusColors,
+                  borderWidth: 2,
+                  borderColor: "#ffffff"
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { position: "bottom" }
+                }
+              }
+            });
+          }
+        }
+
+        // 2. Category Bar Chart
+        const catLabels = lang === 'en'
+          ? ["Water Supply", "Street Lights", "Sanitation", "Roads", "Health/Other"]
+          : (lang === 'hi'
+            ? ["जलापूर्ति", "स्ट्रीट लाइट", "स्वच्छता", "सड़कें", "स्वास्थ्य/अन्य"]
+            : ["पाणीपुरवठा", "स्ट्रीट लाईट्स", "सांडपाणी", "रस्ते", "आरोग्य/इतर"]);
+
+        const canvas2 = document.getElementById("categoryChart");
+        if (canvas2) {
+          const ctx2 = canvas2.getContext("2d");
+          chart2 = new Chart(ctx2, {
+            type: "bar",
+            data: {
+              labels: catLabels,
+              datasets: [{
+                label: lang === 'en' ? "Complaint Count" : (lang === 'hi' ? "शिकायत संख्या" : "तक्रारी संख्या"),
+                data: [48, 36, 32, 18, 11],
+                backgroundColor: ["#0284c7", "#f59e0b", "#16a34a", "#dc2626", "#9333ea"],
+                borderRadius: 6
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                y: { beginAtZero: true }
+              }
+            }
+          });
+        }
+
+        // 3. Solar Trend Line Chart
+        const monthLabels = lang === 'en'
+          ? ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"]
+          : (lang === 'hi'
+            ? ["जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर"]
+            : ["जून", "जुलै", "ऑगस्ट", "सप्टेंबर", "ऑक्टोबर", "नोव्हेंबर"]);
+
+        const canvas3 = document.getElementById("solarTrendChart");
+        if (canvas3) {
+          const ctx3 = canvas3.getContext("2d");
+          chart3 = new Chart(ctx3, {
+            type: "line",
+            data: {
+              labels: monthLabels,
+              datasets: [
+                {
+                  label: lang === 'en' ? "Solar Generation (kWh)" : (lang === 'hi' ? "सोलर उत्पादन (kWh)" : "सोलर निर्मिती (kWh)"),
+                  data: [14200, 11500, 10800, 13400, 16800, 17500],
+                  borderColor: "#16a34a",
+                  backgroundColor: "rgba(22, 163, 74, 0.1)",
+                  fill: true,
+                  tension: 0.3
+                },
+                {
+                  label: lang === 'en' ? "Grid Export (Units)" : (lang === 'hi' ? "ग्रिड निर्यात (Units)" : "ग्रीड निर्यात (Units)"),
+                  data: [6200, 4800, 4100, 5900, 8100, 8900],
+                  borderColor: "#0284c7",
+                  backgroundColor: "rgba(2, 132, 199, 0.1)",
+                  fill: true,
+                  tension: 0.3
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: "bottom" }
+              }
+            }
+          });
+        }
+
+        // 4. Demographics Pie Chart
+        const demoLabels = lang === 'en'
+          ? ["Farmers (58%)", "Traders & Artisans (18%)", "Salaried Employees (12%)", "Students/Others (12%)"]
+          : (lang === 'hi'
+            ? ["किसान (58%)", "व्यापारी व कारीगर (18%)", "नौकरीपेशा (12%)", "छात्र/अन्य (12%)"]
+            : ["शेतकरी (Farmers - 58%)", "व्यावसायिक व कारागीर (18%)", "वेतनदार नोकरदार (12%)", "इतर / विद्यार्थी (12%)"]);
+
+        const canvas4 = document.getElementById("demographicsChart");
+        if (canvas4) {
+          const ctx4 = canvas4.getContext("2d");
+          chart4 = new Chart(ctx4, {
+            type: "pie",
+            data: {
+              labels: demoLabels,
+              datasets: [{
+                data: [58, 18, 12, 12],
+                backgroundColor: ["#15803d", "#d97706", "#2563eb", "#9333ea"]
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: "bottom" }
+              }
+            }
+          });
+        }
+      } else {
+        // Fallback visual rendering if Chart.js CDN is unavailable
+        renderFallbackVisuals(lang, statusLabels, statusColors);
+      }
+    }
+
+    function renderFallbackVisuals(lang, statusLabels, statusColors) {
+      const container1 = document.getElementById("complaintChartContainer");
+      if (container1) {
+        container1.innerHTML = `
+          <div class="h-100 d-flex flex-column justify-content-center px-3">
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>${statusLabels[0]}</span><span class="text-success">97.9%</span>
+              </div>
+              <div class="progress" style="height: 22px;">
+                <div class="progress-bar bg-success" style="width: 97.9%">142</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between small mb-1">
+                <span>${statusLabels[1]}</span><span class="text-primary">1</span>
+              </div>
+              <div class="progress" style="height: 14px;">
+                <div class="progress-bar bg-primary" style="width: 15%">1</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between small mb-1">
+                <span>${statusLabels[2]}</span><span class="text-warning">1</span>
+              </div>
+              <div class="progress" style="height: 14px;">
+                <div class="progress-bar bg-warning text-dark" style="width: 15%">1</div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between small mb-1">
+                <span class="text-danger fw-bold">${statusLabels[3]}</span><span class="text-danger fw-bold">1</span>
+              </div>
+              <div class="progress" style="height: 14px;">
+                <div class="progress-bar bg-danger" style="width: 15%">1</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

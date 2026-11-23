@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krishi Seva & Agriculture | कृषी व शेतकरी सेवा | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | कृषी विभाग</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="agriHeaderTitle">शिवनेरी कृषी सेवा व हवामान केंद्र</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">पिक सल्ला, स्थानिक बाजारभाव, मृदा आरोग्य व कृषी योजना</div>
+        </div>
+      </div>
+      <a href="marketplace.html" class="btn btn-success btn-sm fw-bold">
+        <i class="bi bi-shop me-1"></i><span data-i18n="btnKisanMarket">शेतकरी बाजारपेठ</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="agriBannerTitle">स्थानिक शेतकरी सल्लागार व बाजारभाव मंच</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="heroSubtitle">आधुनिक कृषी तंत्रज्ञान, हवामान अंदाज, जुन्नर एपीएमसीचे ताजे दर आणि पीक विमा मार्गदर्शन.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4">
+      
+      <!-- Weather & Kisan Helpline -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 text-center bg-white mb-4">
+          <div class="text-muted small fw-bold mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i><span data-i18n="weatherWidgetTitle">शिवनेरी परिसर हवामान</span></div>
+          <div class="display-3 fw-bold text-success my-2">28°C</div>
+          <div class="badge bg-success-subtle text-success px-3 py-1 rounded-pill mb-3" data-i18n="weatherPartlyCloudy">आंशिक ढगाळ (Partly Cloudy)</div>
+          
+          <div class="row g-2 text-muted small border-top pt-3 text-start">
+            <div class="col-6"><i class="bi bi-droplet-half text-primary me-1"></i><span data-i18n="weatherHumidity">आर्द्रता: ६२%</span></div>
+            <div class="col-6"><i class="bi bi-wind text-secondary me-1"></i><span data-i18n="weatherWind">वारा: ११ km/h</span></div>
+            <div class="col-12 mt-2"><i class="bi bi-cloud-drizzle text-info me-1"></i><span data-i18n="weatherRain">पावसाची शक्यता: वीकेंडला हलक्या सरी (१५%)</span></div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 p-4 text-white" style="background: linear-gradient(135deg, #0f3d64 0%, #155286 100%);">
+          <h5 class="fw-bold mb-2"><i class="bi bi-headset me-2 text-warning"></i><span data-i18n="kisanCallCenterTitle">किसान कॉल सेंटर</span></h5>
+          <p class="small opacity-75 mb-3" data-i18n="kisanCallCenterDesc">कीडरोग नियंत्रण, खत व्यवस्थापन व हवामानाबाबत कृषी शास्त्रज्ञांशी थेट मोफत बोला.</p>
+          <a href="tel:1551" class="btn btn-warning w-100 fw-bold">
+            <i class="bi bi-telephone-fill me-2"></i>1551 (Toll-Free)
+          </a>
+        </div>
+      </div>
+
+      <!-- APMC Market Rates -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-primary m-0"><i class="bi bi-bar-chart-fill text-success me-2"></i><span data-i18n="mandiRatesTitle">जुन्नर / आळेफाटा कृषी उत्पन्न बाजार समिती (APMC) दैनिक दर</span></h5>
+            <small class="text-muted" data-i18n="livePortalBadge">Live 2026</small>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover table-custom align-middle">
+              <thead>
+                <tr>
+                  <th data-i18n="tblColCrop">पीक / शेतीमाल</th>
+                  <th data-i18n="tblColMinPrice">किमान भाव (₹)</th>
+                  <th data-i18n="tblColMaxPrice">कमाल भाव (₹)</th>
+                  <th data-i18n="tblColAvgPrice">सरासरी दर</th>
+                  <th data-i18n="tblColTrend">बाजाराचा कल</th>
+                </tr>
+              </thead>
+              <tbody id="agriMandiTableBody">
+                <!-- Rendered dynamically by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Crop Advisory Guidance -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+          <h5 class="fw-bold text-dark mb-3"><i class="bi bi-journal-text text-primary me-2"></i><span data-i18n="cropAdvisoryTitle">हंगामी कृषी सल्ला व मार्गदर्शन</span></h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-success mb-1"><i class="bi bi-flower1 me-1"></i><span data-i18n="cropAdvisory1Title">रब्बी कांदा व भाजीपाला:</span></h6>
+                <p class="small text-muted mb-0" data-i18n="cropAdvisory1Desc">थ्रिप्स व करपा रोगाच्या प्रतिबंधासाठी निंबोळी तेल ५ मिली प्रति लिटर पाण्यात मिसळून संध्याकाळी फवारणी करावी.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light h-100">
+                <h6 class="fw-bold text-primary mb-1"><i class="bi bi-droplet-fill me-1"></i><span data-i18n="cropAdvisory2Title">सूक्ष्म सिंचन (Drip) अनुदान:</span></h6>
+                <p class="small text-muted mb-0" data-i18n="cropAdvisory2Desc">ठिबक सिंचन योजनेअंतर्गत ८०% सरकारी अनुदानासाठी महाडीबीटी पोर्टलवर ७/१२ व आधार कार्डासह नोंदणी चालू आहे.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="agriHeaderTitle">कृषी व शेतकरी सेवा दालन</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderAgriMandiTable() {
+      const tbody = document.getElementById("agriMandiTableBody");
+      if (!tbody) return;
+      const rates = window.villageDB ? window.villageDB.getDB().agricultureData.mandiRates : [];
+      tbody.innerHTML = rates.map(r => {
+        const crop = window.tData ? window.tData(r, 'crop') : (r.cropMr || r.cropEn);
+        const trendBadge = window.villageApp ? window.villageApp.formatTrendBadge(r.trend) : `<span class="badge bg-secondary">${r.trend}</span>`;
+        return `
+          <tr>
+            <td class="fw-bold">${crop}</td>
+            <td>₹${r.minPrice}</td>
+            <td>₹${r.maxPrice}</td>
+            <td class="text-success fw-bold">₹${r.avgPrice}</td>
+            <td>${trendBadge}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", renderAgriMandiTable);
+    window.addEventListener("languageChanged", renderAgriMandiTable);
+  </script>
+</body>
+</html>

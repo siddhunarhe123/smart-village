@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education & Library | शिक्षण, ग्रंथालय व शिष्यवृत्ती | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | शालेय शिक्षण व क्रीडा विभाग</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="eduHeaderTitle">शिवनेरी गाव शिक्षण, वाचनालय व युवा विकास</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">डिजिटल शाळा, ई-ग्रंथालय, स्पर्धा परीक्षा केंद्र व शिष्यवृत्ती पोर्टल</div>
+        </div>
+      </div>
+      <a href="https://mahadbt.maharashtra.gov.in" target="_blank" class="btn btn-outline-primary btn-sm fw-bold">
+        <i class="bi bi-mortarboard me-1"></i><span data-i18n="scholarshipsTitle">महाडीबीटी शिष्यवृत्ती</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #0f3d64 0%, #155286 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="eduBannerTitle">गावातील भावी पिढीसाठी स्मार्ट शिक्षण व आधुनिक ज्ञानस्रोत</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="heroSubtitle">जि. प. डिजिटल शाळा, डॉ. कलाम मोफत ई-वाचनालय, स्पर्धा परीक्षा अभ्यासिका आणि उच्च शिक्षणासाठी सरकारी मदत.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4 mb-4">
+      
+      <!-- Schools -->
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="rounded-circle bg-primary text-white p-3 fs-3">
+              <i class="bi bi-building"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold text-dark mb-0" data-i18n="zpSchoolTitle">जि. प. प्राथमिक शाळा शिवनेरी</h5>
+              <span class="badge bg-success-subtle text-success" data-i18n="zpSchoolGrade">Grade A+ (Digital School)</span>
+            </div>
+          </div>
+          <p class="small text-muted mb-3" data-i18n="zpSchoolDesc">
+            पहिली ते सातवी सेमी-इंग्रजी माध्यमासह मोफत शिक्षण, सौरऊर्जेवर चालणारे स्मार्ट डिजिटल फलक, संगणक लॅब आणि समृद्ध शालेय ग्रंथालय.
+          </p>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li class="mb-1" data-i18n="zpStudents"><i class="bi bi-check2 text-success me-1"></i>विद्यार्थी संख्या: २४० मुले व मुली</li>
+            <li class="mb-1" data-i18n="zpTeachers"><i class="bi bi-check2 text-success me-1"></i>शिक्षकांची संख्या: ८ प्रशिक्षित पदवीधर शिक्षक</li>
+            <li class="mb-1" data-i18n="zpAmenities"><i class="bi bi-check2 text-success me-1"></i>मोफत पोषण आहार, पाठ्यपुस्तके व गणवेश वितरण</li>
+            <li class="mb-0" data-i18n="zpHeadmaster"><i class="bi bi-check2 text-success me-1"></i>मुख्याध्यापक: श्री. व्ही. जी. कुटे (९८२२००३३४४)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- E-Library -->
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="rounded-circle bg-warning text-dark p-3 fs-3">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold text-dark mb-0" data-i18n="digitalLibraryTitle">डॉ. ए. पी. जे. अब्दुल कलाम ई-वाचनालय</h5>
+              <span class="badge bg-primary-subtle text-primary" data-i18n="libraryBadge">मोफत डिजिटल अभ्यासिका</span>
+            </div>
+          </div>
+          <p class="small text-muted mb-3" data-i18n="libraryDesc">
+            MPSC, UPSC, पोलीस भरती, तलाठी व बँकिंग स्पर्धा परीक्षांच्या तयारीसाठी वातानुकूलित अभ्यासिका व मोफत इंटरनेट सुविधा.
+          </p>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li class="mb-1" data-i18n="libraryFacility1"><i class="bi bi-check2 text-success me-1"></i>१२ हायस्पीड कॉम्प्युटर आणि मोफत सरकारी वाय-फाय</li>
+            <li class="mb-1" data-i18n="libraryFacility2"><i class="bi bi-check2 text-success me-1"></i>५,०००+ स्पर्धा परीक्षा व संदर्भ पुस्तकांचा संग्रह</li>
+            <li class="mb-1" data-i18n="libraryFacility3"><i class="bi bi-check2 text-success me-1"></i>वेळ: सकाळी ०८:०० ते रात्री १०:०० (सर्व दिवस)</li>
+            <li class="mb-0" data-i18n="libraryFacility4"><i class="bi bi-check2 text-success me-1"></i>प्रवेश: गावातील सर्व युवक-युवतींसाठी विनामूल्य</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="eduHeaderTitle">शिक्षण व युवा विकास विभाग</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

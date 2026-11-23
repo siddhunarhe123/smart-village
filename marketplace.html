@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisan Bazar | स्थानिक शेतकरी बाजार | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar with Language Switcher -->
+  <div class="top-utility-bar">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | ग्रामविकास व पंचायतराज विभाग</span>
+      <div class="d-flex align-items-center gap-3">
+        <a href="index.html" class="text-white text-decoration-none small"><i class="bi bi-house me-1"></i><span data-i18n="navHome">मुख्यपृष्ठ</span></a>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold"><i class="bi bi-person me-1"></i><span data-i18n="navCitizenLogin">नागरिक लॉगिन</span></a>
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-translate me-1"></i><span id="currentLangDisplay">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="#" data-lang="mr">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="#" data-lang="en">English</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="marketHeaderTitle">शिवनेरी किसान बाजार (Kisan Bazaar)</h2>
+          <div class="gov-portal-subtitle" data-i18n="marketHeaderSubtitle">स्थानिक शेतकरी व महिला बचत गटांचा थेट खरेदी-विक्री डिजिटल मंच</div>
+        </div>
+      </div>
+      <button class="btn btn-success fw-bold px-3 py-2 shadow-sm" onclick="openNewProductModal()">
+        <i class="bi bi-plus-circle me-1"></i><span data-i18n="btnAddProduct">माझे उत्पादन जोडा (List Product)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg gov-navbar">
+    <div class="container">
+      <button class="navbar-toggler text-white border-0 py-2" type="button" data-bs-toggle="collapse" data-bs-target="#marketNavbar">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="marketNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i><span data-i18n="navHome">मुख्यपृष्ठ</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="schemes.html"><i class="bi bi-journal-bookmark-fill me-1"></i><span data-i18n="navSchemes">शासकीय योजना</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="notices.html"><i class="bi bi-megaphone-fill me-1"></i><span data-i18n="navNotices">नोटीस फलक</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="complaints.html"><i class="bi bi-chat-left-dots-fill me-1"></i><span data-i18n="navComplaints">तक्रार निवारण</span></a></li>
+          <li class="nav-item"><a class="nav-link active" href="marketplace.html"><i class="bi bi-shop me-1"></i><span data-i18n="navMarketplace">शेतकरी बाजार</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="forms.html"><i class="bi bi-file-earmark-arrow-down-fill me-1"></i><span data-i18n="navForms">दाखले व अर्ज</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="village-stats.html"><i class="bi bi-graph-up-arrow me-1"></i><span data-i18n="navStats">ग्राम आकडेवारी</span></a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="citizen-dashboard.html#marketplace" class="btn btn-outline-light btn-sm fw-semibold">
+            <i class="bi bi-person-circle me-1"></i><span data-i18n="navDashboard">माझे डॅशबोर्ड</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="marketBannerTitle">अस्सल गावठी, सेंद्रिय व मध्यस्थांशिवाय थेट खरेदी</h3>
+      <p class="small text-light opacity-90 mb-0" data-i18n="marketBannerSubtitle">
+        हापूस आंबे, बिलोना तूप, जात्यावरील हळद, शुद्ध गूळ, ताजी भाजी, लॅपटॉप आणि पारंपरिक हस्तकला थेट स्थानिक शेतकऱ्यांकडून मिळवा.
+      </p>
+    </div>
+  </div>
+
+  <!-- Search & Category Filters -->
+  <div class="container py-4">
+    <div class="row g-3 align-items-center mb-4">
+      <div class="col-md-5">
+        <div class="input-group shadow-sm">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+          <input type="text" id="marketSearchInput" class="form-control border-start-0" data-i18n-placeholder="marketSearchPlaceholder" placeholder="उत्पादनाचे नाव शोधा (उदा. भाजीपाला, लॅपटॉप, आंबा, तूप)..." onkeyup="filterMarket()">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="d-flex gap-2 overflow-x-auto pb-1" id="marketCategoryPills">
+          <button class="btn btn-sm btn-outline-success active" onclick="setMarketCategory('all', this)" data-i18n="marketAllProducts">सर्व उत्पादने</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Vegetables', this)" data-i18n="marketVegetables">ताजी भाजी (Vegetables)</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Fruits', this)" data-i18n="marketFruits">फळे (Fruits)</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Dairy', this)" data-i18n="marketDairy">दुग्धजन्य / तूप</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Spices & Grains', this)" data-i18n="marketSpices">हळद व धान्य</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Organic Foods', this)" data-i18n="marketOrganic">सेंद्रिय गूळ</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Handicrafts', this)" data-i18n="marketHandicrafts">हस्तकला</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setMarketCategory('Electronics', this)" data-i18n="marketElectronics">इलेक्ट्रॉनिक्स व लॅपटॉप</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="row g-4" id="marketplaceFullGrid">
+      <!-- Rendered dynamically by JS with 100% accurate matching images -->
+    </div>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="newProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title"><i class="bi bi-basket3 me-2"></i><span data-i18n="modalAddProductTitle">शेतकरी बाजारात उत्पादन जोडा</span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="handleNewMarketProduct(event)">
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formSellerName">शेतकरी / विक्रेत्याचे नाव</label>
+              <input type="text" id="inpSellerName" class="form-control" placeholder="उदा. पांडुरंग काळे" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formSellerPhone">मोबाईल नंबर (WhatsApp)</label>
+                <input type="tel" id="inpSellerPhone" class="form-control" placeholder="१० अंकी क्रमांक" pattern="[0-9]{10}" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formSellerWard">वॉर्ड / पत्ता</label>
+                <input type="text" id="inpSellerWard" class="form-control" placeholder="वॉर्ड २" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductName">उत्पादनाचे नाव (उदा. लॅपटॉप, भाजीपाला, आंबा)</label>
+              <input type="text" id="inpPrdName" class="form-control" placeholder="उदा. लॅपटॉप किंवा ताजी भाजी" required oninput="previewMatchingImage(this.value)">
+              <div id="imageMatchHint" class="small text-success mt-1 d-none"><i class="bi bi-check-circle-fill me-1"></i>शीर्षकानुसार अचूक फोटो निवडला जाईल.</div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formProductPrice">किंमत (₹)</label>
+                <input type="number" id="inpPrdPrice" class="form-control" placeholder="उदा. 250" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formProductUnit">प्रमाण / एकक</label>
+                <input type="text" id="inpPrdUnit" class="form-control" placeholder="उदा. प्रति किलो किंवा प्रति नग" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductCategory">वर्गवारी (Category)</label>
+              <select id="inpPrdCategory" class="form-select">
+                <option value="Vegetables">ताजी भाजी (Vegetables)</option>
+                <option value="Fruits">फळे (Fruits)</option>
+                <option value="Dairy">दुग्धजन्य (Dairy)</option>
+                <option value="Spices & Grains">मसाले व धान्य</option>
+                <option value="Organic Foods">सेंद्रिय पदार्थ</option>
+                <option value="Handicrafts">हस्तकला</option>
+                <option value="Electronics">इलेक्ट्रॉनिक्स व लॅपटॉप</option>
+                <option value="Farm Produce">शेतीमाल (Farm Produce)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductDesc">वर्णन (Description)</label>
+              <textarea id="inpPrdDesc" class="form-control" rows="2" placeholder="उत्पादनाची माहिती सांगा..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100 fw-bold py-2 shadow-sm" data-i18n="formProductSubmitBtn">
+              बाजारात प्रकाशित करा
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div data-i18n="copyrightText">&copy; 2026 ग्रामपंचायत शिवनेरी. सर्व हक्क सुरक्षित.</div>
+      <div class="text-muted mt-1" data-i18n="demoDataNotice">Second Year AI & DS Engineering Design Thinking Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let currentCategory = "all";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      renderProducts();
+
+      // Listen for language change to instantly update all dynamic cards
+      window.addEventListener("languageChanged", function () {
+        renderProducts();
+      });
+    });
+
+    function setMarketCategory(cat, btn) {
+      document.querySelectorAll("#marketCategoryPills .btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = cat;
+      filterMarket();
+    }
+
+    function filterMarket() {
+      const q = document.getElementById("marketSearchInput").value.trim().toLowerCase();
+      let products = window.villageDB.getProducts({ category: currentCategory, search: q });
+      renderProductCards(products);
+    }
+
+    function renderProducts() {
+      const q = (document.getElementById("marketSearchInput") ? document.getElementById("marketSearchInput").value : "").trim().toLowerCase();
+      const products = window.villageDB.getProducts({ category: currentCategory, search: q });
+      renderProductCards(products);
+    }
+
+    function previewMatchingImage(title) {
+      const hint = document.getElementById("imageMatchHint");
+      if (title.trim().length > 2) {
+        hint.classList.remove("d-none");
+      } else {
+        hint.classList.add("d-none");
+      }
+    }
+
+    function renderProductCards(products) {
+      const container = document.getElementById("marketplaceFullGrid");
+      if (!container) return;
+
+      if (products.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center py-5 text-muted">
+            <i class="bi bi-basket3 fs-1 text-muted"></i>
+            <p class="mt-2" data-i18n="noProductsFound">${window.t('noProductsFound')}</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = products.map(p => {
+        // 100% Accurate image directly matched with product title
+        const accurateImg = window.resolveProductImage(p.productNameEn || p.productNameMr, p.category, p.image);
+        const pName = window.tData(p, 'productName');
+        const pDesc = window.tData(p, 'description');
+        const btnContact = window.t('btnContactWhatsApp');
+        const btnCall = window.t('btnCallSeller');
+
+        return `
+          <div class="col-sm-6 col-lg-4 col-xl-3">
+            <div class="product-card p-3 d-flex flex-column h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-success-subtle text-success fw-semibold">${window.tCategory(p.category)}</span>
+                <span class="badge bg-light text-secondary border small">${p.sellerWard}</span>
+              </div>
+              <h6 class="fw-bold mb-1 text-primary text-truncate" title="${pName}">${pName}</h6>
+              <div class="small text-muted mb-1"><i class="bi bi-person me-1"></i>${p.sellerName}</div>
+              <div class="product-price mb-2">₹${p.price} <span class="fs-6 text-muted fw-normal">${p.unit}</span></div>
+              <p class="small text-secondary mb-3 flex-grow-1 text-truncate-2" title="${pDesc}">${pDesc}</p>
+              
+              <!-- Product Image placed directly below text and description -->
+              <div class="product-img-wrap mb-3 shadow-sm">
+                <img src="${accurateImg}" alt="${pName}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80'">
+              </div>
+
+              <div class="mt-auto d-flex gap-2">
+                <a href="https://wa.me/${p.sellerPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I am interested in purchasing ' + pName + ' listed on Smart Village Platform.')}" target="_blank" class="btn btn-success btn-sm flex-grow-1 fw-semibold">
+                  <i class="bi bi-whatsapp me-1"></i>${btnContact}
+                </a>
+                <a href="tel:${p.sellerPhone}" class="btn btn-outline-primary btn-sm" title="${btnCall}">
+                  <i class="bi bi-telephone-fill"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openNewProductModal() {
+      new bootstrap.Modal(document.getElementById("newProductModal")).show();
+    }
+
+    function handleNewMarketProduct(e) {
+      e.preventDefault();
+      const sName = document.getElementById("inpSellerName").value.trim();
+      const sPhone = document.getElementById("inpSellerPhone").value.trim();
+      const sWard = document.getElementById("inpSellerWard").value.trim();
+      const pName = document.getElementById("inpPrdName").value.trim();
+      const pPrice = document.getElementById("inpPrdPrice").value.trim();
+      const pUnit = document.getElementById("inpPrdUnit").value.trim();
+      const pCat = document.getElementById("inpPrdCategory").value;
+      const pDesc = document.getElementById("inpPrdDesc").value.trim();
+
+      // Automatically resolves the exact image matching the title
+      window.villageDB.addProduct({
+        sellerName: sName,
+        sellerPhone: sPhone,
+        sellerWard: sWard,
+        productName: pName,
+        price: pPrice,
+        unit: pUnit,
+        category: pCat,
+        description: pDesc
+      });
+
+      window.villageApp.showToast("उत्पादन बाजारात यशस्वीरीत्या प्रकाशित झाले!", "success");
+      bootstrap.Modal.getInstance(document.getElementById("newProductModal")).hide();
+      renderProducts();
+    }
+  </script>
+</body>
+</html>

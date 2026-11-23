@@ -1,0 +1,227 @@
+/* ==========================================================================
+   SMART VILLAGE DIGITAL PLATFORM - DASHBOARD STYLING (CITIZEN & ADMIN)
+   ========================================================================== */
+
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+  width: 280px;
+  background: #0d2137;
+  color: #e2e8f0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  z-index: 1030;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand {
+  padding: 20px;
+  background: #091726;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-user-card {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.user-avatar-sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gov-accent-saffron);
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 12px 10px;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.sidebar-nav-item {
+  margin-bottom: 4px;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav-link i {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+}
+
+.sidebar-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-nav-link.active {
+  color: #ffffff;
+  background: linear-gradient(90deg, #1b5e20 0%, #2e7d32 100%);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+}
+
+.sidebar-nav-link.admin-active {
+  background: linear-gradient(90deg, #0f3d64 0%, #155286 100%);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #091726;
+}
+
+/* --- Dashboard Main Content Area --- */
+.dashboard-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--gov-border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--gov-shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.dashboard-body {
+  padding: 24px;
+  flex-grow: 1;
+}
+
+/* --- Metric Tiles --- */
+.metric-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--gov-border);
+  box-shadow: var(--gov-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.metric-lbl {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* --- Content Panel & Data Tables --- */
+.content-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--gov-border);
+  box-shadow: var(--gov-shadow-sm);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.panel-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #0f2b48;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-custom {
+  font-size: 0.9rem;
+}
+
+.table-custom th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.775rem;
+  letter-spacing: 0.5px;
+  border-top: none;
+  padding: 12px 14px;
+}
+
+.table-custom td {
+  padding: 14px;
+  vertical-align: middle;
+}
+
+/* --- Citizen Digital Card Preview --- */
+.citizen-id-card {
+  background: linear-gradient(135deg, #0d2137 0%, #15426b 100%);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(13, 33, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+  max-width: 480px;
+}
+
+.citizen-id-card::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+/* Responsive sidebar toggle for mobile */
+@media (max-width: 991.98px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -290px;
+  }
+  .dashboard-sidebar.show {
+    left: 0;
+  }
+}

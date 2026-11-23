@@ -1,0 +1,15 @@
+{
+  "name": "smart-village-digital-platform",
+  "version": "1.0.0",
+  "description": "Smart Village Digital Platform (ग्रामपंचायत शिवनेरी) - E-Governance & Rural Empowerment Portal",
+  "main": "index.html",
+  "keywords": [
+    "smart-village",
+    "e-governance",
+    "gram-panchayat",
+    "maharashtra",
+    "civic-tech"
+  ],
+  "author": "Smart Village Team",
+  "license": "MIT"
+}

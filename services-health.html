@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health & PHC Services | सार्वजनिक आरोग्य व दवाखाना | ग्रामपंचायत शिवनेरी</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन |
+        सार्वजनिक आरोग्य विभाग</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50"
+            type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i
+            class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold"
+          data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem"
+          class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="healthHeaderTitle">प्राथमिक आरोग्य केंद्र (PHC) शिवनेरी</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">राष्ट्रीय आरोग्य अभियान (National Health Mission)
+          </div>
+        </div>
+      </div>
+      <a href="tel:108" class="btn btn-danger btn-sm fw-bold px-3 py-2">
+        <i class="bi bi-telephone-fill me-1"></i><span data-i18n="ambulanceEmergencyTitle">१०८ शासकीय रुग्णवाहिका
+          (24x7)</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="healthBannerTitle">गावातील प्रत्येक नागरिकासाठी दर्जेदार व मोफत आरोग्य सेवा
+      </h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="serviceHealthDesc">ओपीडी तपासणी, २४ तास प्रसूती व अपघात
+        कक्ष, मोफत रक्त तपासणी, जेनेरिक औषधे आणि आयुष्मान भारत कार्ड नोंदणी.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4 mb-4">
+
+      <!-- Doctor & OPD Timings -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="rounded-circle bg-danger text-white p-3 fs-3">
+              <i class="bi bi-hospital"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold text-dark mb-0" data-i18n="phcDoctorScheduleTitle">दवाखाना माहिती व डॉक्टरांचे
+                वेळापत्रक</h5>
+              <small class="text-muted">प्राथमिक आरोग्य केंद्र, शिवनेरी (उपकेंद्र क्रमांक ४)</small>
+            </div>
+          </div>
+
+          <div class="p-3 bg-light rounded-3 border mb-3">
+            <div class="fw-bold text-primary mb-1" data-i18n="medicalOfficer">वैद्यकीय अधिकारी (Medical Officer):</div>
+            <div>डॉ. स्नेहल कुलकर्णी (MBBS, DGO) | मो. ९८२३४५६७८०</div>
+            <div class="small text-muted mt-1" data-i18n="staffInfo">कर्मचारी: २ अधिपरिचारिका (Staff Nurses), १ लॅब टेक्निशियन, ३ आशा सेविका
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="fw-bold text-dark mb-2"><i class="bi bi-clock-history text-danger me-1"></i><span data-i18n="opdTimingsTitle">बाह्यरुग्ण विभाग (OPD) वेळापत्रक:</span></h6>
+            <ul class="list-unstyled small mb-0">
+              <li class="py-1 border-bottom" data-i18n="opdMorning"><strong>सकाळची वेळ:</strong> ०९:०० AM ते ०१:०० PM (सोमवार ते शनिवार)</li>
+              <li class="py-1 border-bottom" data-i18n="opdEvening"><strong>संध्याकाळची वेळ:</strong> ०४:०० PM ते ०७:०० PM (सोमवार ते शुक्रवार)</li>
+              <li class="py-1 text-danger fw-bold" data-i18n="opdEmergency"><strong>आपत्कालीन अपघात व प्रसूती कक्ष:</strong> २४x७ सुरू</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free Facilities -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+          <h5 class="fw-bold text-primary mb-3">
+            <i class="bi bi-heart-pulse-fill text-danger me-2"></i><span data-i18n="freeHealthFacilitiesTitle">मोफत आरोग्य सुविधा व तपासण्या</span>
+          </h5>
+
+          <div class="row g-2 mb-3">
+            <div class="col-12">
+              <div class="p-2 border rounded bg-light small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i><strong data-i18n="freeLabTitle">मोफत पॅथॉलॉजी लॅब:</strong> <span data-i18n="freeLabDesc">रक्त, लघवी, मलेरिया, डेंग्यू व हिमोग्लोबिन तपासणी.</span>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-2 border rounded bg-light small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i><strong data-i18n="freeMedicineTitle">मोफत औषध वितरण:</strong> <span data-i18n="freeMedicineDesc">उच्च रक्तदाब, मधुमेह व संसर्गजन्य आजारांची जेनेरिक औषधे.</span>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-2 border rounded bg-light small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i><strong data-i18n="maternalCareTitle">माता व बाल संगोपन:</strong> <span data-i18n="maternalCareDesc">गरोदर मातांची नियमित तपासणी, धनुर्वात लस व पोषण आहार.</span>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-2 border rounded bg-light small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i><strong data-i18n="ayushmanCardTitle">आयुष्मान भारत कार्ड:</strong> <span data-i18n="ayushmanCardDesc">५ लाख रुपयांपर्यंत मोफत उपचारांसाठी ई-केवायसी सुविधा.</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="tel:02132245100" class="btn btn-outline-danger w-100 fw-bold">
+            <i class="bi bi-telephone-inbound-fill me-2"></i><span data-i18n="callPHCDirect">आरोग्य केंद्राशी थेट बोला (02132-245100)</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span
+          data-i18n="healthHeaderTitle">सार्वजनिक आरोग्य व दवाखाना कक्ष</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri
+        Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

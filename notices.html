@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Notice Board | ग्रामपंचायत नोटीस फलक | शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | ग्रामपंचायत शिवनेरी</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="noticesHeaderTitle">अधिकृत ग्रामपंचायत नोटीस फलक</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">ग्रामपंचायत शिवनेरी, ता. जुन्नर, जि. पुणे</div>
+        </div>
+      </div>
+      <button class="btn btn-outline-danger btn-sm" onclick="window.print()">
+        <i class="bi bi-printer me-1"></i><span data-i18n="btnPrintNotices">नोटीस बोर्ड प्रिंट करा</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #0f3d64 0%, #155286 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="noticesBannerTitle">गाव जाहीर सूचना व ग्रामसभा परिपत्रके</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="noticesBannerSubtitle">गावातील सर्व महत्त्वाच्या शासकीय बैठका, पाणीपुरवठा, लसीकरण आणि कृषी योजनांची अधिकृत परिपत्रके.</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-lg-8" id="noticesFullList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="col-lg-4">
+        <!-- Gram Sabha Info Box -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-light mb-4">
+          <h5 class="fw-bold text-primary mb-3"><i class="bi bi-people me-2"></i><span data-i18n="gramSabhaScheduleTitle">ग्रामसभा वेळापत्रक २०२६</span></h5>
+          <p class="small text-muted mb-3" data-i18n="quickServicesSubtitle">ग्रामसभा हे ग्रामीण लोकशाहीचे सर्वोच्च व्यासपीठ आहे. प्रत्येक मतदान पात्र नागरिकाने उपस्थित राहावे.</p>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-2" data-i18n="gramSabha1"><i class="bi bi-check-circle text-success me-2"></i><strong>२६ जानेवारी:</strong> प्रजासत्ताक दिन ग्रामसभा</li>
+            <li class="mb-2" data-i18n="gramSabha2"><i class="bi bi-check-circle text-success me-2"></i><strong>१ मे:</strong> महाराष्ट्र दिन विशेष ग्रामसभा</li>
+            <li class="mb-2" data-i18n="gramSabha3"><i class="bi bi-check-circle text-success me-2"></i><strong>१५ ऑगस्ट:</strong> स्वातंत्र्य दिन ग्रामसभा</li>
+            <li class="mb-2" data-i18n="gramSabha4"><i class="bi bi-check-circle text-success me-2"></i><strong>२ ऑक्टोबर:</strong> गांधी जयंती स्वच्छता ग्रामसभा</li>
+            <li class="mb-0 text-danger fw-bold" data-i18n="gramSabha5"><i class="bi bi-bell-fill me-2"></i><strong>२६ नोव्हेंबर:</strong> विशेष वार्षिक विकास ग्रामसभा</li>
+          </ul>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+          <h6 class="fw-bold text-dark mb-2"><i class="bi bi-telephone-fill text-danger me-2"></i><span data-i18n="helplineText">कार्यालयीन मदत</span></h6>
+          <p class="small text-muted mb-2" data-i18n="noticeQueries">परिपत्रकासंबंधी काही शंका असल्यास संपर्क करा:</p>
+          <div class="small">
+            <div><strong data-i18n="officerDesignation">ग्रामसेवक:</strong> <span data-i18n="officerName">श्री. राजेश शिंदे</span> (+91 9422001122)</div>
+            <div data-i18n="officeHoursNotice"><strong>कार्यालय वेळ:</strong> सकाळी ९:३० ते संध्याकाळी ६:००</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="noticesHeaderTitle">अधिकृत नोटीस फलक</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderNotices();
+    });
+
+    window.addEventListener("languageChanged", function () {
+      renderNotices();
+    });
+
+    function renderNotices() {
+      const container = document.getElementById("noticesFullList");
+      const notices = window.villageDB.getNotices();
+      const issuedByText = window.t('issuedByLabel');
+      const downloadText = window.t('btnDownloadNoticeCopy');
+
+      container.innerHTML = notices.map(n => {
+        const title = window.tData(n, 'title');
+        const content = window.tData(n, 'content');
+        const categoryLabel = window.tCategory ? window.tCategory(n.category) : n.category;
+
+        return `
+          <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 ${n.priority === 'Urgent' ? 'border-start border-danger border-4' : 'border-start border-primary border-4'}">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="badge ${n.priority === 'Urgent' ? 'bg-danger' : 'bg-primary'} px-3 py-1">${categoryLabel}</span>
+              <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>${n.date}</span>
+            </div>
+            <h4 class="fw-bold text-dark mb-2">${title}</h4>
+            <p class="text-secondary mb-3" style="line-height: 1.8;">${content}</p>
+            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+              <small class="text-muted"><i class="bi bi-person-badge me-1"></i>${issuedByText} <strong>${n.issuedBy}</strong></small>
+              <button class="btn btn-sm btn-outline-primary" onclick="alert('${window.getLang() === 'en' ? 'Downloading official circular copy...' : (window.getLang() === 'hi' ? 'परिपत्रक डाउनलोड हो रहा है...' : 'सदर परिपत्रक अधिकृतरीत्या डाऊनलोड केले जात आहे...')}')">
+                <i class="bi bi-download me-1"></i>${downloadText}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+  </script>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+</html>

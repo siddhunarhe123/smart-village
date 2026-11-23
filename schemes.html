@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Schemes | शासकीय जनकल्याण योजना | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <span data-i18n="govtOfMaharashtra"><i class="bi bi-shield-check me-1 text-warning"></i>महाराष्ट्र शासन | ग्रामविकास विभाग</span>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Switcher Dropdown -->
+        <div class="dropdown me-2">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle py-0 px-2 text-white border-white-50" type="button" data-bs-toggle="dropdown" id="langDropdownBtn">
+            <i class="bi bi-translate me-1"></i><span id="currentLangLabel">मराठी</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="en" onclick="window.setLanguage('en')">English</a></li>
+            <li><a class="dropdown-item lang-select-btn active fw-bold" href="javascript:void(0)" data-lang="mr" onclick="window.setLanguage('mr')">मराठी (Marathi)</a></li>
+            <li><a class="dropdown-item lang-select-btn" href="javascript:void(0)" data-lang="hi" onclick="window.setLanguage('hi')">हिन्दी (Hindi)</a></li>
+          </ul>
+        </div>
+        <a href="index.html" class="text-white text-decoration-none small" data-i18n="navHome"><i class="bi bi-house me-1"></i>मुख्यपृष्ठ</a>
+        <span class="opacity-50">|</span>
+        <a href="citizen-login.html" class="text-warning text-decoration-none small fw-semibold" data-i18n="navCitizenLogin">नागरिक लॉगिन</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="gov-brand-header py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="gov-logo-img">
+        <div>
+          <h2 class="gov-portal-title m-0" data-i18n="schemesHeaderTitle">शासकीय योजना मार्गदर्शक दालन</h2>
+          <div class="gov-portal-subtitle" data-i18n="villageName">ग्रामपंचायत शिवनेरी, ता. जुन्नर, जि. पुणे</div>
+        </div>
+      </div>
+      <a href="citizen-dashboard.html#schemes" class="btn btn-outline-primary btn-sm fw-semibold" data-i18n="navDashboard">
+        <i class="bi bi-person-circle me-1"></i>माझ्या योजना डॅशबोर्ड
+      </a>
+    </div>
+  </header>
+
+  <!-- Title Banner -->
+  <div class="py-4 text-white" style="background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);">
+    <div class="container">
+      <h3 class="fw-bold mb-1" data-i18n="schemesBannerTitle">केंद्र व राज्य सरकारच्या प्रमुख जनकल्याणकारी योजना</h3>
+      <p class="small text-light opacity-75 mb-0" data-i18n="schemesBannerSubtitle">शेतकरी, गृहनिर्माण, आरोग्य, सौर ऊर्जा आणि महिला-बालक कल्याणासाठी संपूर्ण माहिती, पात्रता व अर्ज प्रक्रिया.</p>
+    </div>
+  </div>
+
+  <!-- Search & Category Filter Section -->
+  <div class="container py-4">
+    <div class="row g-3 align-items-center mb-4">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <input type="text" id="schemeSearchInput" class="form-control" data-i18n-placeholder="searchSchemesPlaceholder" placeholder="योजना नाव, विभाग किंवा लाभ शोधा..." onkeyup="filterSchemes()">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex gap-2 overflow-x-auto pb-1" id="categoryPills">
+          <button class="btn btn-sm btn-outline-success active" onclick="setSchemeCategory('all', this)" data-i18n="allSchemes">सर्व योजना</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setSchemeCategory('Agriculture', this)" data-i18n="catAgriculture">कृषी</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setSchemeCategory('Housing', this)" data-i18n="catHousing">घरकूल (Housing)</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setSchemeCategory('Water & Sanitation', this)" data-i18n="catWaterSupply">पाणीपुरवठा</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setSchemeCategory('Clean Energy', this)" data-i18n="catCleanEnergy">सौर ऊर्जा (Solar)</button>
+          <button class="btn btn-sm btn-outline-success" onclick="setSchemeCategory('Health & Social Welfare', this)" data-i18n="catHealth">आरोग्य</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schemes Cards Grid -->
+    <div class="row g-4" id="schemesGridContainer">
+      <!-- Rendered dynamically by JS -->
+    </div>
+  </div>
+
+  <!-- Scheme Detail Modal -->
+  <div class="modal fade" id="schemeDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold" id="mSchemeTitle">योजना तपशील</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" id="mSchemeBody">
+          <!-- Filled by JS -->
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="closeBtn">बंद करा</button>
+          <a href="#" id="mSchemeOfficialBtn" target="_blank" class="btn btn-success fw-bold">
+            <span data-i18n="btnApplyOfficial">अधिकृत पोर्टलवर अर्ज करा</span> <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="gov-footer mt-5">
+    <div class="container text-center small">
+      <div>&copy; 2026 <span data-i18n="villageName">ग्रामपंचायत शिवनेरी</span>. <span data-i18n="schemesHeaderTitle">शासकीय जनकल्याण कक्ष</span>.</div>
+      <div class="text-muted mt-1" data-i18n="copyrightText">Smart Village Digital Platform | Gram Panchayat Shivneri Good Governance Project</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let activeCategory = "all";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      renderSchemesGrid();
+    });
+
+    window.addEventListener("languageChanged", function () {
+      filterSchemes();
+    });
+
+    function setSchemeCategory(cat, btn) {
+      document.querySelectorAll("#categoryPills .btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeCategory = cat;
+      filterSchemes();
+    }
+
+    function filterSchemes() {
+      const q = document.getElementById("schemeSearchInput").value.trim().toLowerCase();
+      let schemes = window.villageDB.getSchemes(activeCategory);
+
+      if (q) {
+        schemes = schemes.filter(s => 
+          (s.titleMr && s.titleMr.toLowerCase().includes(q)) ||
+          (s.titleEn && s.titleEn.toLowerCase().includes(q)) ||
+          (s.titleHi && s.titleHi.toLowerCase().includes(q)) ||
+          s.category.toLowerCase().includes(q) ||
+          s.financialBenefit.toLowerCase().includes(q)
+        );
+      }
+
+      renderSchemesCards(schemes);
+    }
+
+    function renderSchemesGrid() {
+      const schemes = window.villageDB.getSchemes();
+      renderSchemesCards(schemes);
+    }
+
+    function renderSchemesCards(schemes) {
+      const container = document.getElementById("schemesGridContainer");
+      if (!container) return;
+
+      if (schemes.length === 0) {
+        const emptyMsg = window.getLang() === 'en' ? 'No schemes found in this category.' : (window.getLang() === 'hi' ? 'इस श्रेणी में कोई योजना नहीं मिली।' : 'या वर्गवारीत कोणतीही योजना आढळली नाही.');
+        container.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <i class="bi bi-search fs-1 text-muted"></i>
+            <p class="text-muted mt-2">${emptyMsg}</p>
+          </div>
+        `;
+        return;
+      }
+
+      const benefitLabel = window.t('financialBenefitTitle');
+      const detailsBtnLabel = window.t('btnEligibilityDocs');
+
+      container.innerHTML = schemes.map(s => {
+        const title = window.tData(s, 'title');
+        const dept = window.tData(s, 'department');
+        const desc = window.tData(s, 'description');
+        const catBadge = window.tCategory ? window.tCategory(s.category) : s.category;
+
+        return `
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border rounded-4 shadow-sm p-4 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-success-subtle text-success px-2 py-1">${catBadge}</span>
+                <span class="small text-muted"><i class="bi bi-clock me-1"></i>${s.deadline}</span>
+              </div>
+              <h5 class="fw-bold text-primary mb-2">${title}</h5>
+              <div class="small text-muted mb-2"><i class="bi bi-building me-1"></i>${dept}</div>
+              
+              <div class="p-2 bg-warning-subtle text-dark rounded-3 border small mb-3">
+                <i class="bi bi-cash-stack text-warning me-1"></i><strong>${benefitLabel}</strong> ${s.financialBenefit}
+              </div>
+
+              <p class="small text-secondary mb-3 flex-grow-1">${desc}</p>
+
+              <div class="pt-3 border-top d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm flex-grow-1" onclick="openSchemeModal('${s.id}')">
+                  <i class="bi bi-info-circle me-1"></i>${detailsBtnLabel}
+                </button>
+                <a href="${s.officialLink}" target="_blank" class="btn btn-success btn-sm" title="Apply Online">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openSchemeModal(schemeId) {
+      const s = window.villageDB.getSchemes().find(x => x.id === schemeId);
+      if (!s) return;
+
+      const title = window.tData(s, 'title');
+      const dept = window.tData(s, 'department');
+      const eligList = (window.getLang() === 'en' ? s.eligibilityEn : (window.getLang() === 'hi' ? (s.eligibilityHi || s.eligibilityEn) : s.eligibilityMr)) || s.eligibilityEn;
+
+      document.getElementById("mSchemeTitle").textContent = title;
+      document.getElementById("mSchemeOfficialBtn").href = s.officialLink;
+
+      document.getElementById("mSchemeBody").innerHTML = `
+        <div class="mb-3">
+          <span class="badge bg-success me-2">${s.category}</span>
+          <span class="text-muted small">${dept}</span>
+        </div>
+
+        <div class="p-3 bg-light rounded-3 border mb-3">
+          <h6 class="fw-bold text-dark mb-1"><i class="bi bi-gift-fill text-warning me-2"></i>${window.t('financialBenefitTitle')}</h6>
+          <div class="text-success fw-bold">${s.financialBenefit}</div>
+        </div>
+
+        <h6 class="fw-bold text-primary mb-2"><i class="bi bi-person-check-fill me-1"></i>${window.t('eligibilityTitle')}</h6>
+        <ul class="small text-secondary ps-3 mb-3">
+          ${eligList.map(e => `<li>${e}</li>`).join("")}
+        </ul>
+
+        <h6 class="fw-bold text-primary mb-2"><i class="bi bi-file-earmark-check-fill me-1"></i>${window.t('requiredDocsTitle')}</h6>
+        <div class="row g-2 mb-3">
+          ${s.documentsRequired.map(d => `
+            <div class="col-sm-6">
+              <div class="p-2 border rounded bg-white small">
+                <i class="bi bi-check2-circle text-success me-1"></i>${d}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+
+        <h6 class="fw-bold text-primary mb-1"><i class="bi bi-arrow-right-circle-fill me-1"></i>${window.t('applyProcessTitle')}</h6>
+        <p class="small text-muted">${s.applicationProcess}</p>
+      `;
+
+      new bootstrap.Modal(document.getElementById("schemeDetailModal")).show();
+    }
+  </script>
+</body>
+</html>

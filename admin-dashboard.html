@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | प्रशासकीय नियंत्रण कक्ष | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <div class="dashboard-wrapper">
+    
+    <!-- ADMIN SIDEBAR -->
+    <aside class="dashboard-sidebar" id="adminSidebar">
+      <div class="sidebar-brand" style="background-color: #071727;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" style="width: 38px; filter: brightness(0) invert(1);">
+        <div>
+          <div class="fw-bold text-white small" data-i18n="villageName">ग्रामपंचायत शिवनेरी</div>
+          <div class="badge bg-primary text-white py-0 px-2" style="font-size: 0.7rem;" data-i18n="adminPortalBadge">प्रशासकीय कक्ष (Admin)</div>
+        </div>
+      </div>
+
+      <!-- Officer Profile Card -->
+      <div class="sidebar-user-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Gram Sevak" class="user-avatar-sm" style="border-color: #3b82f6;">
+        <div class="overflow-hidden">
+          <div class="fw-bold text-white text-truncate small" data-i18n="officerName">राजेश व्ही. शिंदे</div>
+          <div class="small text-light opacity-75" data-i18n="officerDesignation">ग्रामसेवक (VDO)</div>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="#overview" class="sidebar-nav-link admin-active active" data-admin-tab="overview">
+            <i class="bi bi-speedometer2 text-info"></i>
+            <span data-i18n="adminTabOverview">१. नियंत्रण डॅशबोर्ड (Overview)</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#complaints" class="sidebar-nav-link" data-admin-tab="complaints">
+            <i class="bi bi-chat-square-dots-fill text-warning"></i>
+            <span data-i18n="adminTabComplaints">२. तक्रार निवारण (Grievances)</span>
+            <span class="badge bg-danger rounded-pill ms-auto" id="adminBadgePending">३</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#citizens" class="sidebar-nav-link" data-admin-tab="citizens">
+            <i class="bi bi-people-fill text-success"></i>
+            <span data-i18n="adminTabCitizens">३. नागरिक यादी (Citizens)</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#publish-notice" class="sidebar-nav-link" data-admin-tab="publish-notice">
+            <i class="bi bi-megaphone-fill text-danger"></i>
+            <span data-i18n="adminTabNotices">४. नोटीस प्रसिद्ध करा</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#manage-schemes" class="sidebar-nav-link" data-admin-tab="manage-schemes">
+            <i class="bi bi-journal-check text-primary"></i>
+            <span data-i18n="adminTabSchemes">५. शासकीय योजना व्यवस्थापन</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#moderate-market" class="sidebar-nav-link" data-admin-tab="moderate-market">
+            <i class="bi bi-shop text-success"></i>
+            <span data-i18n="adminTabMarketplace">६. शेतकरी बाजार मॉडरेशन</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#reports" class="sidebar-nav-link" data-admin-tab="reports">
+            <i class="bi bi-file-earmark-bar-graph text-warning"></i>
+            <span data-i18n="adminTabReports">७. ग्राम अहवाल व आकडेवारी</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline-danger btn-sm w-100 fw-bold" onclick="window.villageDB.logout()">
+          <i class="bi bi-power me-1"></i><span data-i18n="tabLogout">प्रशासकीय लॉगआउट</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN ADMIN CONTENT -->
+    <main class="dashboard-main">
+      
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-light d-lg-none" onclick="toggleAdminSidebar()">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <div>
+            <h5 class="fw-bold m-0 text-primary" id="adminSectionTitle" data-i18n="adminWelcome">प्रशासकीय नियंत्रण डॅशबोर्ड</h5>
+            <small class="text-muted d-none d-md-inline" data-i18n="adminSubtitle">ग्रामपंचायत शिवनेरी ई-प्रशासन प्रणाली (ISO 9001:2015)</small>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-globe me-1"></i><span data-i18n="navPublicPortal">सार्वजनिक पोर्टल</span>
+          </a>
+
+          <!-- Language Selector -->
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-translate me-1"></i><span id="currentLangDisplay">मराठी</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><a class="dropdown-item lang-select-btn active fw-bold" href="#" data-lang="mr">मराठी (Marathi)</a></li>
+              <li><a class="dropdown-item lang-select-btn" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+              <li><a class="dropdown-item lang-select-btn" href="#" data-lang="en">English</a></li>
+            </ul>
+          </div>
+
+          <button class="btn btn-danger btn-sm fw-bold" onclick="window.villageDB.logout()" title="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-body">
+
+        <!-- 1. OVERVIEW TAB -->
+        <section id="admin-tab-overview" class="admin-pane active">
+          <!-- Metric Tiles Row -->
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3">
+              <div class="metric-box">
+                <div>
+                  <div class="metric-val text-primary" id="metricTotalCitizens">3</div>
+                  <div class="metric-lbl" data-i18n="adminTotalCitizens">नोंदणीकृत नागरिक (Citizens)</div>
+                </div>
+                <div class="stat-icon-box stat-icon-blue"><i class="bi bi-people-fill"></i></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+              <div class="metric-box">
+                <div>
+                  <div class="metric-val text-danger" id="metricPendingComplaints">3</div>
+                  <div class="metric-lbl" data-i18n="adminPendingComplaints">प्रलंबित तक्रारी (Pending)</div>
+                </div>
+                <div class="stat-icon-box stat-icon-red"><i class="bi bi-exclamation-triangle-fill"></i></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+              <div class="metric-box">
+                <div>
+                  <div class="metric-val text-success" id="metricResolvedComplaints">142</div>
+                  <div class="metric-lbl" data-i18n="adminResolvedComplaints">निवारित तक्रारी (Resolved)</div>
+                </div>
+                <div class="stat-icon-box stat-icon-green"><i class="bi bi-check-circle-fill"></i></div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+              <div class="metric-box">
+                <div>
+                  <div class="metric-val text-info" id="metricActiveSchemes">6</div>
+                  <div class="metric-lbl" data-i18n="adminActiveSchemes">शासकीय योजना (Schemes)</div>
+                </div>
+                <div class="stat-icon-box stat-icon-purple"><i class="bi bi-award-fill"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Panels -->
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="content-panel">
+                <div class="panel-title">
+                  <span><i class="bi bi-clock-history text-danger me-2"></i><span data-i18n="recentUrgentGrievances">तातडीने लक्ष देण्याजोग्या तक्रारी</span></span>
+                  <button class="btn btn-sm btn-outline-primary" onclick="switchAdminTab('complaints')">View All</button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover table-custom">
+                    <thead>
+                      <tr>
+                        <th data-i18n="tblColId">तक्रार ID</th>
+                        <th data-i18n="tblColCitizen">नागरिक</th>
+                        <th data-i18n="tblColCategory">वर्ग</th>
+                        <th data-i18n="tblColStatus">स्थिती</th>
+                        <th data-i18n="tblColAction">कृती</th>
+                      </tr>
+                    </thead>
+                    <tbody id="overviewRecentComplaints">
+                      <!-- Rendered by JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="content-panel">
+                <div class="panel-title">
+                  <span><i class="bi bi-lightning-charge-fill text-warning me-2"></i><span data-i18n="quickActionsTitle">द्रुत कृती (Quick Actions)</span></span>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-outline-danger text-start py-2" onclick="switchAdminTab('publish-notice')">
+                    <i class="bi bi-megaphone me-2"></i><span data-i18n="btnPublishEmergencyNotice">नवीन आणीबाणी नोटीस प्रसिद्ध करा</span>
+                  </button>
+                  <button class="btn btn-outline-success text-start py-2" onclick="switchAdminTab('moderate-market')">
+                    <i class="bi bi-check2-all me-2"></i><span data-i18n="btnReviewMarketListings">शेतकरी बाजार नोंदी तपासा</span>
+                  </button>
+                  <button class="btn btn-outline-primary text-start py-2" onclick="switchAdminTab('citizens')">
+                    <i class="bi bi-search me-2"></i><span data-i18n="btnVerifyCitizenId">नागरिक ओळखपत्र पडताळणी</span>
+                  </button>
+                  <button class="btn btn-outline-dark text-start py-2" onclick="printGrievanceReport()">
+                    <i class="bi bi-printer me-2"></i><span data-i18n="btnPrintMonthlyReport">मासिक तक्रार अहवाल प्रिंट करा</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. COMPLAINTS MANAGEMENT TAB -->
+        <section id="admin-tab-complaints" class="admin-pane d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-chat-square-dots-fill text-warning me-2"></i><span data-i18n="complaintHeader">सार्वजनिक तक्रार निवारण व्यवस्थापन कक्ष</span></span>
+            </div>
+
+            <!-- Filters -->
+            <div class="row g-2 mb-3">
+              <div class="col-md-4">
+                <input type="text" id="adminComplaintSearch" class="form-control form-control-sm" placeholder="Search Complaint ID, Name, Ward..." onkeyup="filterAdminComplaints()">
+              </div>
+              <div class="col-md-3">
+                <select id="adminStatusFilter" class="form-select form-select-sm" onchange="filterAdminComplaints()">
+                  <option value="all">All Status</option>
+                  <option value="Submitted">Submitted (दाखल)</option>
+                  <option value="Under Review">Under Review (पडताळणी)</option>
+                  <option value="In Progress">In Progress (प्रगतीपथावर)</option>
+                  <option value="Resolved">Resolved (निवारण झाले)</option>
+                  <option value="Rejected">Rejected (फेटाळली)</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select id="adminCategoryFilter" class="form-select form-select-sm" onchange="filterAdminComplaints()">
+                  <option value="all">All Categories</option>
+                  <option value="Water Supply">Water Supply (पाणीपुरवठा)</option>
+                  <option value="Street Lights">Street Lights (स्ट्रीट लाईट)</option>
+                  <option value="Sanitation & Drainage">Sanitation (सांडपाणी)</option>
+                  <option value="Roads & Infrastructure">Roads (रस्ते)</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-sm btn-outline-secondary w-100" onclick="resetAdminComplaintFilters()">
+                  <i class="bi bi-arrow-counterclockwise"></i> <span data-i18n="btnReset">रीसेट</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Complaints Table -->
+            <div class="table-responsive">
+              <table class="table table-hover table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th data-i18n="tblColId">आयडी</th>
+                    <th data-i18n="tblColCitizen">नागरिक व संपर्क</th>
+                    <th data-i18n="tblColSubject">विषय व विभाग</th>
+                    <th data-i18n="tblColWard">वॉर्ड / ठिकाण</th>
+                    <th data-i18n="tblColDate">दाखल तारीख</th>
+                    <th data-i18n="tblColStatus">स्थिती</th>
+                    <th data-i18n="tblColAction">कृती</th>
+                  </tr>
+                </thead>
+                <tbody id="adminComplaintsTableBody">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. CITIZENS MANAGEMENT TAB -->
+        <section id="admin-tab-citizens" class="admin-pane d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-people-fill text-success me-2"></i><span data-i18n="adminTabCitizens">नोंदणीकृत नागरिक यादी (Citizen Registry)</span></span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th data-i18n="fullNameLabel">नाव व छायाचित्र</th>
+                    <th data-i18n="mobileLabel">मोबाईल</th>
+                    <th data-i18n="wardLabel">वॉर्ड व घर क्र.</th>
+                    <th data-i18n="occupationLabel">व्यवसाय</th>
+                    <th data-i18n="regDateLabel">नोंदणी तारीख</th>
+                    <th data-i18n="tblColStatus">स्थिती</th>
+                  </tr>
+                </thead>
+                <tbody id="adminCitizensTableBody">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. PUBLISH NOTICE TAB -->
+        <section id="admin-tab-publish-notice" class="admin-pane d-none">
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <div class="content-panel">
+                <div class="panel-title">
+                  <span><i class="bi bi-pencil-square text-danger me-2"></i><span data-i18n="adminTabNotices">नवीन परिपत्रक प्रसिद्ध करा</span></span>
+                </div>
+
+                <form onsubmit="handlePublishNotice(event)">
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">नोटीस शीर्षक (Notice Title)</label>
+                    <input type="text" id="notTitle" class="form-control" placeholder="उदा. विशेष ग्रामसभा बैठक सूचना" required>
+                  </div>
+
+                  <div class="row g-2 mb-3">
+                    <div class="col-6">
+                      <label class="form-label fw-semibold">वर्ग (Category)</label>
+                      <select id="notCategory" class="form-select">
+                        <option value="Gram Sabha">Gram Sabha</option>
+                        <option value="Public Utility">Public Utility</option>
+                        <option value="Health Alert">Health Alert</option>
+                        <option value="Agriculture Alert">Agriculture Alert</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label fw-semibold">प्राधान्य (Priority)</label>
+                      <select id="notPriority" class="form-select">
+                        <option value="Normal">Normal</option>
+                        <option value="Important">Important</option>
+                        <option value="Urgent">Urgent</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">सविस्तर मजकूर (Circular Content)</label>
+                    <textarea id="notContent" class="form-control" rows="4" placeholder="परिपत्रकातील सविस्तर सूचना येथे लिहा..." required></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold" data-i18n="issuedByLabel">जारीकर्ता (Issued By)</label>
+                    <input type="text" id="notIssuedBy" class="form-control" value="सौ. सुनिता पाटील (सरपंच) व श्री. राजेश शिंदे (ग्रामसेवक)">
+                  </div>
+
+                  <button type="submit" class="btn btn-danger w-100 fw-bold" data-i18n="publishBtn">
+                    <i class="bi bi-broadcast me-1"></i>नोटीस तात्काळ प्रसिद्ध करा
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="content-panel">
+                <div class="panel-title">
+                  <span><i class="bi bi-list-check text-primary me-2"></i><span data-i18n="adminPublishedNotices">सध्या प्रसिद्ध असलेल्या नोटिसेस</span></span>
+                </div>
+                <div id="adminNoticesList">
+                  <!-- Rendered by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. MANAGE SCHEMES TAB -->
+        <section id="admin-tab-manage-schemes" class="admin-pane d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-journal-check text-primary me-2"></i><span data-i18n="adminTabSchemes">शासकीय योजना व्यवस्थापन</span></span>
+              <button class="btn btn-sm btn-outline-success" onclick="alert('Add scheme modal...')">
+                <i class="bi bi-plus-circle me-1"></i>Add Scheme
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Benefit</th>
+                    <th>Deadline</th>
+                  </tr>
+                </thead>
+                <tbody id="adminSchemesTableBody">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. MARKETPLACE MODERATION TAB (Includes Laptop, Vegetables, etc.) -->
+        <section id="admin-tab-moderate-market" class="admin-pane d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-shop text-success me-2"></i><span data-i18n="adminTabMarketplace">शेतकरी बाजार नोंदी मॉडरेशन (Kisan Bazaar Review)</span></span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Seller</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="adminMarketplaceTableBody">
+                  <!-- Rendered by JS with accurate matching images -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. REPORTS & EXPORT TAB -->
+        <section id="admin-tab-reports" class="admin-pane d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-file-earmark-bar-graph text-warning me-2"></i><span data-i18n="adminTabReports">ग्रामपंचायत तक्रार व सेवा अहवाल</span></span>
+              <button class="btn btn-primary btn-sm fw-bold" onclick="printGrievanceReport()">
+                <i class="bi bi-printer me-1"></i><span data-i18n="btnPrintReport">अहवाल प्रिंट करा</span>
+              </button>
+            </div>
+            <p class="text-muted small mb-4">
+              मासिक तक्रार निवारण आढावा अहवाल.
+            </p>
+
+            <div class="p-4 border rounded-3 bg-light" id="printableGrievanceReport">
+              <div class="text-center pb-3 mb-4 border-bottom border-dark">
+                <h5 class="fw-bold mb-1" data-i18n="govtOfMaharashtra">महाराष्ट्र शासन | ग्रामविकास विभाग</h5>
+                <h3 class="fw-bold text-primary mb-1" data-i18n="villageName">ग्रामपंचायत शिवनेरी</h3>
+                <div data-i18n="statsBannerSubtitle">मासिक सार्वजनिक तक्रार निवारण आढावा अहवाल - नोव्हेंबर २०२६</div>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-3 text-center border-end">
+                  <div class="display-6 fw-bold text-primary">१४५</div>
+                  <div class="small text-muted" data-i18n="adminTotalComplaints">एकूण प्राप्त तक्रारी</div>
+                </div>
+                <div class="col-3 text-center border-end">
+                  <div class="display-6 fw-bold text-success">१४२</div>
+                  <div class="small text-muted" data-i18n="adminResolvedComplaints">निवारित तक्रारी</div>
+                </div>
+                <div class="col-3 text-center border-end">
+                  <div class="display-6 fw-bold text-danger">३</div>
+                  <div class="small text-muted" data-i18n="adminPendingComplaints">प्रलंबित तक्रारी</div>
+                </div>
+                <div class="col-3 text-center">
+                  <div class="display-6 fw-bold text-info">९७.९%</div>
+                  <div class="small text-muted">निवारण दर (Resolution Rate)</div>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-sm small">
+                  <thead class="table-light">
+                    <tr>
+                      <th>विभाग</th>
+                      <th>प्राप्त तक्रारी</th>
+                      <th>निवारण</th>
+                      <th>प्रलंबित</th>
+                      <th>सरासरी कालावधी</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>पाणीपुरवठा (Water Supply)</td><td>४८</td><td>४७</td><td>१</td><td>२४ तास</td></tr>
+                    <tr><td>स्ट्रीट लाईट्स (Street Lights)</td><td>३६</td><td>३६</td><td>०</td><td>४८ तास</td></tr>
+                    <tr><td>सांडपाणी व स्वच्छता (Sanitation)</td><td>३२</td><td>३१</td><td>१</td><td>२४ तास</td></tr>
+                    <tr><td>रस्ते व खड्डे (Roads)</td><td>१८</td><td>१७</td><td>१</td><td>५ दिवस</td></tr>
+                    <tr><td>इतर सार्वजनिक समस्या</td><td>११</td><td>११</td><td>०</td><td>२ दिवस</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: Update Complaint Status -->
+  <div class="modal fade" id="updateComplaintModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="bi bi-pencil-square me-2"></i><span data-i18n="updateStatusModalTitle">तक्रार स्थिती अद्यतन करा</span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="handleSaveComplaintStatus(event)">
+            <input type="hidden" id="editComplaintId">
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="tblColId">तक्रार क्रमांक</label>
+              <input type="text" id="displayCmpId" class="form-control bg-light" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="selectNewStatusLabel">नवीन स्थिती निवडा (New Status) <span class="text-danger">*</span></label>
+              <select id="selectNewStatus" class="form-select" required>
+                <option value="Submitted">Submitted (दाखल झाली)</option>
+                <option value="Under Review">Under Review (पडताळणी सुरू)</option>
+                <option value="In Progress">In Progress (काम प्रगतीपथावर)</option>
+                <option value="Resolved">Resolved (निवारण झाले)</option>
+                <option value="Rejected">Rejected (फेटाळली)</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="assignedToLabel">नेमलेला कर्मचारी / अधिकारी (Assigned To)</label>
+              <input type="text" id="inputAssignedTo" class="form-control" placeholder="उदा. कैलास जाधव (नळ कारागीर)">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="adminRemarksLabel">ग्रामसेवक / कार्यालयीन शेरा (Officer Remarks) <span class="text-danger">*</span></label>
+              <textarea id="inputAdminRemarks" class="form-control" rows="3" placeholder="दुरुस्तीचे काम सुरू झाले, साहित्याची पाहणी झाली इत्यादी..." required></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-i18n="cancelBtn">रद्द करा</button>
+              <button type="submit" class="btn btn-primary fw-bold" data-i18n="btnSaveStatus">स्थिती सेव्ह करा व नागरिकास कळवा</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: View Complaint Detail & Photo -->
+  <div class="modal fade" id="viewComplaintModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="viewModalTitle">तक्रार तपशील</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" id="viewModalBody">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let adminUser = null;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      adminUser = window.villageDB.getCurrentUser();
+      if (!adminUser || adminUser.role !== "admin") {
+        adminUser = window.villageDB.getDB().admins[0];
+        window.villageDB.setCurrentUser(adminUser, "admin");
+      }
+
+      setupAdminNavigation();
+      refreshDashboardMetrics();
+      renderAllAdminData();
+
+      window.addEventListener("languageChanged", function () {
+        refreshDashboardMetrics();
+        renderAllAdminData();
+      });
+    });
+
+    function renderAllAdminData() {
+      renderAdminComplaints();
+      renderAdminCitizens();
+      renderAdminNotices();
+      renderAdminSchemes();
+      renderAdminMarketplace();
+    }
+
+    function toggleAdminSidebar() {
+      document.getElementById("adminSidebar").classList.toggle("show");
+    }
+
+    function setupAdminNavigation() {
+      const links = document.querySelectorAll(".sidebar-nav-link");
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetTab = this.getAttribute("data-admin-tab");
+          switchAdminTab(targetTab);
+        });
+      });
+    }
+
+    function switchAdminTab(tabName) {
+      document.querySelectorAll(".sidebar-nav-link").forEach(l => l.classList.remove("active"));
+      const activeLink = document.querySelector(`.sidebar-nav-link[data-admin-tab="${tabName}"]`);
+      if (activeLink) activeLink.classList.add("active");
+
+      document.querySelectorAll(".admin-pane").forEach(pane => pane.classList.add("d-none"));
+      const targetPane = document.getElementById(`admin-tab-${tabName}`);
+      if (targetPane) targetPane.classList.remove("d-none");
+
+      const titleEl = document.getElementById("adminSectionTitle");
+      if (activeLink) {
+        titleEl.textContent = activeLink.querySelector("span").textContent;
+      }
+      document.getElementById("adminSidebar").classList.remove("show");
+    }
+
+    function refreshDashboardMetrics() {
+      const db = window.villageDB.getDB();
+      const citizens = db.citizens || [];
+      const complaints = db.complaints || [];
+      const schemes = db.schemes || [];
+
+      const pending = complaints.filter(c => c.status !== "Resolved" && c.status !== "Rejected").length;
+      const resolved = complaints.filter(c => c.status === "Resolved").length + 140;
+
+      document.getElementById("metricTotalCitizens").textContent = citizens.length;
+      document.getElementById("metricPendingComplaints").textContent = pending;
+      document.getElementById("metricResolvedComplaints").textContent = resolved;
+      document.getElementById("metricActiveSchemes").textContent = schemes.length;
+      document.getElementById("adminBadgePending").textContent = pending;
+
+      const overviewTbody = document.getElementById("overviewRecentComplaints");
+      if (overviewTbody) {
+        overviewTbody.innerHTML = complaints.slice(0, 3).map(c => `
+          <tr>
+            <td class="fw-bold text-primary">${c.id}</td>
+            <td>${c.citizenName}<br><small class="text-muted">${c.citizenMobile}</small></td>
+            <td>${window.tCategory(c.category)}</td>
+            <td>${window.villageApp.formatStatusBadge(c.status)}</td>
+            <td>
+              <button class="btn btn-sm btn-primary py-0" onclick="openUpdateModal('${c.id}')">
+                ${window.t('btnUpdateStatus')}
+              </button>
+            </td>
+          </tr>
+        `).join("");
+      }
+    }
+
+    function renderAdminComplaints(filter = {}) {
+      const tbody = document.getElementById("adminComplaintsTableBody");
+      if (!tbody) return;
+
+      const complaints = window.villageDB.getComplaints(filter);
+      if (complaints.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-muted">No complaints found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = complaints.map(c => {
+        const title = window.tData(c, 'title');
+        return `
+          <tr>
+            <td class="fw-bold text-primary">${c.id}</td>
+            <td>
+              <strong>${c.citizenName}</strong><br>
+              <small class="text-muted"><i class="bi bi-telephone me-1"></i>${c.citizenMobile}</small>
+            </td>
+            <td>
+              <span class="badge bg-light text-dark border mb-1">${window.tCategory(c.category)}</span><br>
+              <span class="small fw-semibold text-truncate d-inline-block" style="max-width: 200px;">${title}</span>
+            </td>
+            <td><small>${c.ward}<br>${c.landmark}</small></td>
+            <td><small class="text-muted">${c.submittedAt}</small></td>
+            <td>${window.villageApp.formatStatusBadge(c.status)}</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-info" title="${window.t('btnViewDetails')}" onclick="openViewModal('${c.id}')">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <button class="btn btn-primary" title="${window.t('btnUpdateStatus')}" onclick="openUpdateModal('${c.id}')">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function filterAdminComplaints() {
+      const search = document.getElementById("adminComplaintSearch").value.trim();
+      const status = document.getElementById("adminStatusFilter").value;
+      const category = document.getElementById("adminCategoryFilter").value;
+      renderAdminComplaints({ search, status, category });
+    }
+
+    function resetAdminComplaintFilters() {
+      document.getElementById("adminComplaintSearch").value = "";
+      document.getElementById("adminStatusFilter").value = "all";
+      document.getElementById("adminCategoryFilter").value = "all";
+      renderAdminComplaints();
+    }
+
+    function openUpdateModal(complaintId) {
+      const c = window.villageDB.getComplaintById(complaintId);
+      if (!c) return;
+
+      document.getElementById("editComplaintId").value = c.id;
+      document.getElementById("displayCmpId").value = `${c.id} - ${window.tData(c, 'title')}`;
+      document.getElementById("selectNewStatus").value = c.status;
+      document.getElementById("inputAssignedTo").value = c.assignedTo || "";
+      document.getElementById("inputAdminRemarks").value = c.adminRemarks || "";
+
+      new bootstrap.Modal(document.getElementById("updateComplaintModal")).show();
+    }
+
+    function handleSaveComplaintStatus(e) {
+      e.preventDefault();
+      const id = document.getElementById("editComplaintId").value;
+      const newStatus = document.getElementById("selectNewStatus").value;
+      const assignedTo = document.getElementById("inputAssignedTo").value.trim();
+      const remarks = document.getElementById("inputAdminRemarks").value.trim();
+
+      const res = window.villageDB.updateComplaintStatus(id, newStatus, remarks, assignedTo);
+      if (res.success) {
+        window.villageApp.showToast(`Status for ${id} updated to ${newStatus}!`, "success");
+        bootstrap.Modal.getInstance(document.getElementById("updateComplaintModal")).hide();
+        refreshDashboardMetrics();
+        renderAdminComplaints();
+      }
+    }
+
+    function openViewModal(complaintId) {
+      const c = window.villageDB.getComplaintById(complaintId);
+      if (!c) return;
+
+      const title = window.tData(c, 'title');
+      const desc = window.tData(c, 'description');
+
+      document.getElementById("viewModalTitle").textContent = `${c.id} : ${title}`;
+      document.getElementById("viewModalBody").innerHTML = `
+        <div class="row g-3">
+          <div class="col-md-7">
+            <h6 class="fw-bold text-primary mb-2">${title}</h6>
+            <p class="text-secondary small mb-3">${desc}</p>
+            <div class="row g-2 small border-top pt-2">
+              <div class="col-6"><strong>Citizen:</strong> ${c.citizenName}</div>
+              <div class="col-6"><strong>Mobile:</strong> ${c.citizenMobile}</div>
+              <div class="col-6"><strong>Ward:</strong> ${c.ward}</div>
+              <div class="col-6"><strong>Landmark:</strong> ${c.landmark}</div>
+              <div class="col-6"><strong>Date:</strong> ${c.submittedAt}</div>
+              <div class="col-6"><strong>Status:</strong> ${window.villageApp.formatStatusBadge(c.status)}</div>
+              <div class="col-12 mt-2"><strong>Remarks:</strong> ${c.adminRemarks}</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="fw-semibold small mb-1">Attached Photo:</div>
+            <img src="${c.photo}" alt="Complaint Photo" class="img-fluid rounded border shadow-sm">
+          </div>
+        </div>
+      `;
+      new bootstrap.Modal(document.getElementById("viewComplaintModal")).show();
+    }
+
+    function renderAdminCitizens() {
+      const tbody = document.getElementById("adminCitizensTableBody");
+      if (!tbody) return;
+      const citizens = window.villageDB.getDB().citizens || [];
+
+      tbody.innerHTML = citizens.map(c => `
+        <tr>
+          <td class="fw-bold">${c.id}</td>
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <img src="${c.photo}" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+              <strong>${c.name}</strong>
+            </div>
+          </td>
+          <td>${c.mobile}</td>
+          <td>${c.ward}, ${c.houseNo}</td>
+          <td>${c.occupation || 'Resident'}</td>
+          <td>${c.registeredOn}</td>
+          <td><span class="badge bg-success-subtle text-success">Active</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderAdminNotices() {
+      const container = document.getElementById("adminNoticesList");
+      if (!container) return;
+      const notices = window.villageDB.getNotices();
+
+      container.innerHTML = notices.map(n => {
+        const title = window.tData(n, 'title');
+        const content = window.tData(n, 'content');
+
+        return `
+          <div class="notice-item ${n.priority === 'Urgent' ? 'urgent' : ''}">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <span class="badge ${n.priority === 'Urgent' ? 'bg-danger' : 'bg-primary'}">${window.tCategory(n.category)}</span>
+              <button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="deleteNotice('${n.id}')">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+            <h6 class="fw-bold mb-1">${title}</h6>
+            <p class="small text-muted mb-1">${content}</p>
+            <small class="text-secondary">Date: ${n.date} | By: ${n.issuedBy}</small>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function handlePublishNotice(e) {
+      e.preventDefault();
+      const title = document.getElementById("notTitle").value.trim();
+      const category = document.getElementById("notCategory").value;
+      const priority = document.getElementById("notPriority").value;
+      const content = document.getElementById("notContent").value.trim();
+      const issuedBy = document.getElementById("notIssuedBy").value.trim();
+
+      window.villageDB.addNotice({
+        title, category, priority, content, issuedBy
+      });
+
+      window.villageApp.showToast("Notice broadcasted successfully!", "success");
+      e.target.reset();
+      renderAdminNotices();
+    }
+
+    function deleteNotice(id) {
+      if (confirm("Delete this notice?")) {
+        window.villageDB.deleteNotice(id);
+        renderAdminNotices();
+      }
+    }
+
+    function renderAdminSchemes() {
+      const tbody = document.getElementById("adminSchemesTableBody");
+      if (!tbody) return;
+      const schemes = window.villageDB.getSchemes();
+
+      tbody.innerHTML = schemes.map(s => {
+        const title = window.tData(s, 'title');
+        return `
+          <tr>
+            <td class="fw-bold">${s.id}</td>
+            <td><strong>${title}</strong></td>
+            <td>${s.departmentEn || s.departmentMr}</td>
+            <td><span class="badge bg-warning-subtle text-dark border">${s.financialBenefit}</span></td>
+            <td>${s.deadline}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderAdminMarketplace() {
+      const tbody = document.getElementById("adminMarketplaceTableBody");
+      if (!tbody) return;
+      const products = window.villageDB.getProducts();
+
+      tbody.innerHTML = products.map(p => {
+        const accurateImg = window.resolveProductImage(p.productNameEn || p.productNameMr, p.category, p.image);
+        const pName = window.tData(p, 'productName');
+
+        return `
+          <tr>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <img src="${accurateImg}" class="rounded" style="width: 36px; height: 36px; object-fit: cover;">
+                <strong>${pName}</strong>
+              </div>
+            </td>
+            <td>${p.sellerName}<br><small class="text-muted">${p.sellerPhone}</small></td>
+            <td class="fw-bold text-success">₹${p.price} ${p.unit}</td>
+            <td><span class="badge bg-light text-dark border">${window.tCategory(p.category)}</span></td>
+            <td>${p.listedOn}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger py-0" onclick="deleteMarketProduct('${p.id}')">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function deleteMarketProduct(id) {
+      if (confirm("Remove this product listing?")) {
+        window.villageDB.deleteProduct(id);
+        renderAdminMarketplace();
+      }
+    }
+
+    function printGrievanceReport() {
+      window.print();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Dashboard | नागरिक डॅशबोर्ड | ग्रामपंचायत शिवनेरी</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="tricolor-bar"></div>
+
+  <div class="dashboard-wrapper">
+    
+    <!-- LEFT SIDEBAR (12 Modules) -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" style="width: 38px; filter: brightness(0) invert(1);">
+        <div>
+          <div class="fw-bold text-white small" data-i18n="villageName">ग्रामपंचायत शिवनेरी</div>
+          <div class="badge bg-success-subtle text-success py-0 px-2" style="font-size: 0.7rem;" data-i18n="citizenPortalBadge">नागरिक पोर्टल</div>
+        </div>
+      </div>
+
+      <!-- User Card -->
+      <div class="sidebar-user-card">
+        <img id="sidebarAvatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="user-avatar-sm">
+        <div class="overflow-hidden">
+          <div class="fw-bold text-white text-truncate small" id="sidebarUserName">रमेश तुकाराम पाटील</div>
+          <div class="small text-light opacity-75" id="sidebarUserWard">वॉर्ड २ (किसान गल्ली)</div>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="#profile" class="sidebar-nav-link active" data-tab="profile">
+            <i class="bi bi-person-bounding-box text-warning"></i>
+            <span data-i18n="tabProfile">१. माझे प्रोफाईल (Profile)</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#new-complaint" class="sidebar-nav-link" data-tab="new-complaint">
+            <i class="bi bi-pencil-square text-danger"></i>
+            <span data-i18n="tabNewComplaint">२. नवीन तक्रार नोंदवा</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#my-complaints" class="sidebar-nav-link" data-tab="my-complaints">
+            <i class="bi bi-clock-history text-info"></i>
+            <span data-i18n="tabMyComplaints">३. तक्रारींची स्थिती (Track)</span>
+            <span class="badge bg-danger rounded-pill ms-auto" id="userComplaintCount">२</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#schemes" class="sidebar-nav-link" data-tab="schemes">
+            <i class="bi bi-award-fill text-success"></i>
+            <span data-i18n="tabSchemes">४. शासकीय योजना (Schemes)</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#notices" class="sidebar-nav-link" data-tab="notices">
+            <i class="bi bi-megaphone-fill text-primary"></i>
+            <span data-i18n="tabNotices">५. गाव नोटीस फलक</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#agriculture" class="sidebar-nav-link" data-tab="agriculture">
+            <i class="bi bi-flower1 text-success"></i>
+            <span data-i18n="tabAgriculture">६. कृषी माहिती व बाजारभाव</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#health" class="sidebar-nav-link" data-tab="health">
+            <i class="bi bi-heart-pulse-fill text-danger"></i>
+            <span data-i18n="tabHealth">७. आरोग्य व दवाखाना (PHC)</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#education" class="sidebar-nav-link" data-tab="education">
+            <i class="bi bi-book-half text-warning"></i>
+            <span data-i18n="tabEducation">८. शिक्षण व वाचनालय</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#marketplace" class="sidebar-nav-link" data-tab="marketplace">
+            <i class="bi bi-shop text-success"></i>
+            <span data-i18n="tabMarketplace">९. स्थानिक शेतकरी बाजार</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#forms" class="sidebar-nav-link" data-tab="forms">
+            <i class="bi bi-file-earmark-arrow-down-fill text-info"></i>
+            <span data-i18n="tabForms">१०. दाखले व अर्ज डाउनलोड</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#emergency" class="sidebar-nav-link" data-tab="emergency">
+            <i class="bi bi-telephone-inbound-fill text-danger"></i>
+            <span data-i18n="tabEmergency">११. आणीबाणी संपर्क</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#notifications" class="sidebar-nav-link" data-tab="notifications">
+            <i class="bi bi-bell-fill text-warning"></i>
+            <span data-i18n="tabNotifications">१२. सूचना व संदेश</span>
+            <span class="badge bg-warning text-dark rounded-pill ms-auto">३</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline-danger btn-sm w-100 fw-bold" onclick="window.villageDB.logout()">
+          <i class="bi bi-box-arrow-right me-1"></i><span data-i18n="tabLogout">लॉगआउट (Logout)</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="dashboard-main">
+      
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-light d-lg-none" onclick="toggleSidebar()">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <h5 class="fw-bold m-0 text-primary" id="currentSectionTitle" data-i18n="tabProfile">माझे प्रोफाईल</h5>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="btn btn-outline-secondary btn-sm d-none d-md-inline-block">
+            <i class="bi bi-house me-1"></i><span data-i18n="navHome">मुख्य पोर्टल</span>
+          </a>
+
+          <!-- Language Selector -->
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-translate me-1"></i><span id="currentLangDisplay">मराठी</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><a class="dropdown-item lang-select-btn active fw-bold" href="#" data-lang="mr">मराठी (Marathi)</a></li>
+              <li><a class="dropdown-item lang-select-btn" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+              <li><a class="dropdown-item lang-select-btn" href="#" data-lang="en">English</a></li>
+            </ul>
+          </div>
+
+          <div class="dropdown">
+            <button class="btn btn-light rounded-circle position-relative" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-bell fs-5 text-dark"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">२</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow p-2" style="width: 300px;">
+              <li class="fw-bold small px-2 py-1 border-bottom" data-i18n="tabNotifications">सूचना (Notifications)</li>
+              <li class="p-2 border-bottom small">
+                <div class="fw-semibold text-primary">तक्रार प्रगती: CMP-2026-1001</div>
+                <div class="text-muted">पाईपलाईन दुरुस्तीचे काम ७०% पूर्ण झाले आहे.</div>
+              </li>
+              <li class="p-2 small">
+                <div class="fw-semibold text-success">विशेष ग्रामसभा</div>
+                <div class="text-muted">गुरुवार २६ नोव्हेंबर रोजी उपस्थित राहावे.</div>
+              </li>
+            </ul>
+          </div>
+
+          <button class="btn btn-danger btn-sm fw-semibold" onclick="window.villageDB.logout()" title="Logout">
+            <i class="bi bi-power"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body with 12 Tab Panels -->
+      <div class="dashboard-body">
+
+        <!-- 1. PROFILE TAB -->
+        <section id="tab-profile" class="tab-pane-custom active">
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <!-- Digital Citizen ID Card -->
+              <div class="citizen-id-card mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" style="width: 30px; filter: brightness(0) invert(1);">
+                    <div>
+                      <div class="fw-bold small" data-i18n="govtOfMaharashtra">महाराष्ट्र शासन - ग्रामविकास विभाग</div>
+                      <div class="text-light opacity-75" style="font-size: 0.75rem;" data-i18n="citizenDigitalIdTitle">ग्रामपंचायत शिवनेरी डिजिटल नागरिक ओळखपत्र</div>
+                    </div>
+                  </div>
+                  <span class="badge bg-success border">Active</span>
+                </div>
+
+                <div class="d-flex gap-3 align-items-center my-3">
+                  <img id="cardUserPhoto" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Citizen Photo" class="rounded-3 border border-2 border-white" style="width: 75px; height: 85px; object-fit: cover;">
+                  <div>
+                    <h5 class="fw-bold mb-1" id="cardUserName">रमेश तुकाराम पाटील</h5>
+                    <div class="small opacity-75 mb-1" id="cardUserMobile"><i class="bi bi-telephone me-1"></i>+91 9876543210</div>
+                    <div class="small opacity-75" id="cardUserWard"><i class="bi bi-geo-alt me-1"></i>वॉर्ड २, घर क्र. H-45</div>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-top border-white border-opacity-25 d-flex justify-content-between align-items-center text-light opacity-75 small">
+                  <div><span data-i18n="citizenCardId">नागरिक आयडी</span>: <span class="fw-bold text-white" id="cardUserId">CIT-001</span></div>
+                  <div><span data-i18n="citizenCardAadhaar">आधार</span>: <span class="fw-bold text-white">XXXX-XXXX-4589</span></div>
+                </div>
+              </div>
+
+              <button class="btn btn-outline-primary btn-sm w-100" onclick="window.print()">
+                <i class="bi bi-printer me-1"></i><span data-i18n="btnPrintIdCard">डिजिटल ओळखपत्र प्रिंट करा (Print ID)</span>
+              </button>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="content-panel">
+                <div class="panel-title">
+                  <span><i class="bi bi-person-lines-fill text-primary me-2"></i><span data-i18n="personalDetailsTitle">वैयक्तिक तपशील (Personal Details)</span></span>
+                  <button class="btn btn-sm btn-outline-success" onclick="editProfileModal()">
+                    <i class="bi bi-pencil me-1"></i><span data-i18n="btnUpdateProfile">प्रोफाईल अपडेट करा</span>
+                  </button>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="fullNameLabel">पूर्ण नाव</label>
+                    <div class="fw-bold" id="profName">रमेश तुकाराम पाटील</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="mobileLabel">मोबाईल क्रमांक</label>
+                    <div class="fw-bold" id="profMobile">9876543210</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="emailLabel">ईमेल आयडी</label>
+                    <div class="fw-bold" id="profEmail">ramesh@village.in</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="occupationLabel">व्यवसाय</label>
+                    <div class="fw-bold" id="profOccupation">शेतकरी (Farmer)</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="wardLabel">वॉर्ड व गल्ली</label>
+                    <div class="fw-bold" id="profWard">वॉर्ड २ (किसान गल्ली)</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="houseNoLabel">घर क्रमांक</label>
+                    <div class="fw-bold" id="profHouseNo">H-45</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="regDateLabel">नोंदणी तारीख</label>
+                    <div class="fw-bold" id="profRegDate">15 Jan 2026</div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="small text-muted" data-i18n="verificationStatusLabel">सत्यापन स्थिती</label>
+                    <div><span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-patch-check-fill me-1"></i><span data-i18n="verifiedResidentBadge">प्रमाणित ग्रामस्थ</span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. SUBMIT COMPLAINT TAB -->
+        <section id="tab-new-complaint" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-pencil-square text-danger me-2"></i><span data-i18n="tabNewComplaint">नवीन ग्राम तक्रार नोंदवा</span></span>
+            </div>
+            <p class="text-muted small mb-4" data-i18n="complaintBannerSubtitle">
+              पाणीपुरवठा, सांडपाणी, रस्ते, स्ट्रीट लाईट किंवा स्वच्छतेसंबंधी समस्या थेट ग्रामपंचायतीकडे नोंदवा. तक्रार नोंदवताच आपणास एक युनिक ट्रॅकिंग आयडी मिळेल.
+            </p>
+
+            <form id="newComplaintForm" onsubmit="handleNewComplaintSubmit(event)">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintCategory">तक्रारीचा वर्ग (Category) <span class="text-danger">*</span></label>
+                  <select id="cmpCategory" class="form-select" required>
+                    <option value="" data-i18n="selectCategoryOpt">Select Category</option>
+                    <option value="Water Supply" data-i18n="catWaterSupply">Water Supply (पाणीपुरवठा)</option>
+                    <option value="Street Lights" data-i18n="catStreetLights">Street Lights (स्ट्रीट लाईट्स)</option>
+                    <option value="Sanitation & Drainage" data-i18n="catSanitation">Sanitation & Drainage (सांडपाणी)</option>
+                    <option value="Roads & Infrastructure" data-i18n="catRoads">Roads & Infrastructure (रस्ते)</option>
+                    <option value="Health & Hygiene" data-i18n="catHealth">Health & Hygiene (आरोग्य)</option>
+                    <option value="Other" data-i18n="catOther">Other (इतर)</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintTitle">तक्रारीचे शीर्षक / थोडक्यात विषय <span class="text-danger">*</span></label>
+                  <input type="text" id="cmpTitle" class="form-control" data-i18n-placeholder="complaintTitlePlaceholder" placeholder="उदा. वॉर्ड २ मधील पाईपलाईन लिकेज" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintWard">वॉर्ड / गल्ली <span class="text-danger">*</span></label>
+                  <input type="text" id="cmpWard" class="form-control" value="Ward 2 (Kisan Galli)" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintLandmark">जवळची खूण / ठिकाण (Landmark)</label>
+                  <input type="text" id="cmpLandmark" class="form-control" data-i18n-placeholder="complaintLandmarkPlaceholder" placeholder="उदा. विठ्ठल मंदिरासमोर, मारुती चौक">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintDesc">तक्रारीचे सविस्तर वर्णन <span class="text-danger">*</span></label>
+                  <textarea id="cmpDesc" class="form-control" rows="4" data-i18n-placeholder="complaintDescPlaceholder" placeholder="समस्येचे सविस्तर वर्णन लिहा..." required></textarea>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintPhoto">समस्येचा फोटो (Photo Evidence)</label>
+                  <input type="file" id="cmpPhotoFile" class="form-control" accept="image/*" onchange="previewComplaintPhoto(this)">
+                  <div id="cmpPhotoPreview" class="mt-2 d-none">
+                    <img src="" id="cmpPhotoPreviewImg" alt="Preview" class="img-thumbnail rounded" style="max-height: 140px;">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" data-i18n="formComplaintPriority">प्राधान्य (Urgency Level)</label>
+                  <select id="cmpPriority" class="form-select">
+                    <option value="Medium">Medium (मध्यम)</option>
+                    <option value="High">High Urgency (तातडीचे)</option>
+                    <option value="Critical">Critical (गंभीर)</option>
+                  </select>
+                </div>
+
+                <div class="col-12 pt-3">
+                  <button type="submit" class="btn btn-danger btn-lg px-4 fw-bold shadow-sm" data-i18n="formComplaintSubmitBtn">
+                    तक्रार ऑनलाईन सबमिट करा
+                  </button>
+                  <button type="reset" class="btn btn-light btn-lg px-4 ms-2" data-i18n="btnReset">रीसेट करा</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 3. TRACK COMPLAINTS TAB -->
+        <section id="tab-my-complaints" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-clock-history text-info me-2"></i><span data-i18n="tabMyComplaints">माझ्या दाखल तक्रारींचा मागोवा</span></span>
+              <button class="btn btn-sm btn-outline-danger" onclick="switchTab('new-complaint')">
+                <i class="bi bi-plus-circle me-1"></i><span data-i18n="btnSubmitComplaint">नवीन तक्रार करा</span>
+              </button>
+            </div>
+
+            <!-- Complaint Filter Tabs -->
+            <div class="d-flex gap-2 mb-4 overflow-x-auto pb-2">
+              <button class="btn btn-sm btn-outline-primary active" onclick="filterMyComplaints('all', this)" data-i18n="filterAll">सर्व तक्रारी</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="filterMyComplaints('Submitted', this)" data-i18n="statusSubmitted">दाखल (Submitted)</button>
+              <button class="btn btn-sm btn-outline-warning" onclick="filterMyComplaints('In Progress', this)" data-i18n="statusInProgress">काम प्रगतीपथावर</button>
+              <button class="btn btn-sm btn-outline-success" onclick="filterMyComplaints('Resolved', this)" data-i18n="statusResolved">निवारण झाले</button>
+            </div>
+
+            <div id="myComplaintsList" class="row g-3">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. SCHEMES TAB -->
+        <section id="tab-schemes" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-award-fill text-success me-2"></i><span data-i18n="tabSchemes">शासकीय जनकल्याण योजना</span></span>
+              <a href="schemes.html" target="_blank" class="btn btn-sm btn-outline-primary">
+                <span data-i18n="btnViewAllSchemes">पूर्ण पोर्टल उघडा</span> <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+            
+            <div class="row g-3" id="citizenSchemesContainer">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. NOTICES TAB -->
+        <section id="tab-notices" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-megaphone-fill text-primary me-2"></i><span data-i18n="tabNotices">ग्रामपंचायत नोटीस व परिपत्रके</span></span>
+            </div>
+            <div id="citizenNoticesContainer">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. AGRICULTURE TAB -->
+        <section id="tab-agriculture" class="tab-pane-custom d-none">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <!-- Weather Widget -->
+              <div class="content-panel bg-white text-center">
+                <h6 class="fw-bold text-muted mb-2"><i class="bi bi-cloud-sun me-1 text-warning"></i><span data-i18n="weatherWidgetTitle">स्थानिक हवामान अंदाज</span></h6>
+                <div class="display-4 fw-bold text-primary mb-1">28°C</div>
+                <div class="badge bg-warning-subtle text-dark px-3 py-1 mb-3" id="liveWeatherCondition">Partly Cloudy</div>
+                <div class="d-flex justify-content-around text-muted small border-top pt-3">
+                  <div><i class="bi bi-droplet me-1"></i>Humidity: 62%</div>
+                  <div><i class="bi bi-wind me-1"></i>Wind: 11 km/h</div>
+                </div>
+              </div>
+
+              <!-- Kisan Call Center -->
+              <div class="content-panel bg-success-subtle border-success-subtle text-success">
+                <h6 class="fw-bold mb-2"><i class="bi bi-headset me-1"></i><span data-i18n="kisanCallCenterTitle">किसान कॉल सेंटर (Toll-Free)</span></h6>
+                <p class="small mb-3">पिकांवरील रोग व कीड नियंत्रणासाठी कृषी तज्ज्ञांशी मोफत बोला:</p>
+                <a href="tel:1551" class="btn btn-success w-100 fw-bold"><i class="bi bi-telephone-fill me-2"></i>1551</a>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <div class="content-panel">
+                <h5 class="fw-bold text-primary mb-3"><i class="bi bi-graph-up me-2"></i><span data-i18n="mandiRatesTitle">जुन्नर / आळेफाटा कृषी उत्पन्न बाजार समिती दैनिक दर</span></h5>
+                <div class="table-responsive">
+                  <table class="table table-hover table-custom">
+                    <thead>
+                      <tr>
+                        <th>पीक / शेतीमाल</th>
+                        <th>किमान भाव</th>
+                        <th>कमाल भाव</th>
+                        <th>सरासरी भाव</th>
+                        <th>कल</th>
+                      </tr>
+                    </thead>
+                    <tbody id="mandiRatesTable">
+                      <!-- Rendered by JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. HEALTH TAB -->
+        <section id="tab-health" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-heart-pulse-fill text-danger me-2"></i><span data-i18n="tabHealth">प्राथमिक आरोग्य केंद्र शिवनेरी (PHC Services)</span></span>
+              <a href="tel:108" class="btn btn-danger btn-sm fw-bold"><i class="bi bi-telephone-fill me-1"></i>108</a>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border h-100">
+                  <h6 class="fw-bold text-danger mb-2"><i class="bi bi-hospital me-1"></i><span data-i18n="phcDoctorScheduleTitle">दवाखाना माहिती व डॉक्टर</span></h6>
+                  <p class="small mb-1"><strong>Doctor:</strong> Dr. Snehal Kulkarni (MBBS, DGO)</p>
+                  <p class="small mb-1"><strong>OPD:</strong> 09:00 AM - 01:00 PM | 04:00 PM - 07:00 PM</p>
+                  <p class="small mb-0"><strong>Emergency:</strong> 24x7 Maternity & First-Aid</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border h-100">
+                  <h6 class="fw-bold text-primary mb-2"><i class="bi bi-shield-check me-1"></i><span data-i18n="freeHealthFacilitiesTitle">मोफत आरोग्य सुविधा</span></h6>
+                  <ul class="small text-muted mb-0 ps-3">
+                    <li>Ayushman Bharat & MJPJAY Cashless Treatments</li>
+                    <li>Free Blood, Urine & Pathology Testing Lab</li>
+                    <li>Routine Child Vaccination Camps</li>
+                    <li>Free Generic Medicine Counter</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. EDUCATION TAB -->
+        <section id="tab-education" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-book-half text-warning me-2"></i><span data-i18n="tabEducation">गाव शिक्षण व वाचनालय सुविधा</span></span>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="card border rounded-3 p-3">
+                  <h6 class="fw-bold text-primary" data-i18n="zpSchoolTitle">जि. प. प्राथमिक शाळा शिवनेरी</h6>
+                  <p class="small text-muted mb-2">Std 1st to 7th Semi-English, Digital Flat Panels, Free Mid-Day Meals and Free Uniform Scheme.</p>
+                  <span class="badge bg-success-subtle text-success w-fit">Grade A+ Digital School</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card border rounded-3 p-3">
+                  <h6 class="fw-bold text-primary" data-i18n="digitalLibraryTitle">डॉ. ए. पी. जे. अब्दुल कलाम डिजिटल वाचनालय</h6>
+                  <p class="small text-muted mb-2">12 High-speed PCs, Free Wi-Fi, MPSC, UPSC & Competitive Exam Study Room. Open 8 AM to 10 PM.</p>
+                  <span class="badge bg-primary-subtle text-primary w-fit">Free E-Library</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. MARKETPLACE TAB (Features accurate matching photos) -->
+        <section id="tab-marketplace" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-shop text-success me-2"></i><span data-i18n="tabMarketplace">स्थानिक शेतकरी बाजार (Kisan Bazaar)</span></span>
+              <button class="btn btn-success btn-sm fw-bold" onclick="openAddProductModal()">
+                <i class="bi bi-plus-circle me-1"></i><span data-i18n="btnAddProduct">माझे उत्पादन जोडा</span>
+              </button>
+            </div>
+            <p class="text-muted small mb-4" data-i18n="marketBannerSubtitle">
+              आपल्या शेतातील फळे, धान्य, बिलोना तूप, भाजी किंवा हस्तकला थेट ग्राहकांसाठी मोफत लिस्ट करा.
+            </p>
+            <div class="row g-3" id="citizenMarketplaceContainer">
+              <!-- Rendered by JS with 100% accurate images -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. FORMS TAB -->
+        <section id="tab-forms" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-file-earmark-arrow-down-fill text-info me-2"></i><span data-i18n="tabForms">ग्रामपंचायत अधिकृत दाखले व प्रपत्र</span></span>
+            </div>
+            <div class="row g-3" id="citizenFormsContainer">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 11. EMERGENCY TAB -->
+        <section id="tab-emergency" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title text-danger">
+              <span><i class="bi bi-telephone-inbound-fill me-2"></i><span data-i18n="tabEmergency">२४x७ आणीबाणी व प्रशासकीय संपर्क डिरेक्टरी</span></span>
+            </div>
+            <div class="row g-3" id="citizenEmergencyContainer">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 12. NOTIFICATIONS TAB -->
+        <section id="tab-notifications" class="tab-pane-custom d-none">
+          <div class="content-panel">
+            <div class="panel-title">
+              <span><i class="bi bi-bell-fill text-warning me-2"></i><span data-i18n="tabNotifications">माझे संदेश व अलर्ट्स (Notifications)</span></span>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item p-3 border rounded-3 mb-2 bg-light">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="fw-bold text-primary"><i class="bi bi-info-circle me-1"></i>Grievance Update: CMP-2026-1001</span>
+                  <small class="text-muted">Yesterday 02:15 PM</small>
+                </div>
+                <div class="small text-secondary">
+                  Gram Sevak Note: Pipeline materials allocated; repair is 70% complete.
+                </div>
+              </li>
+              <li class="list-group-item p-3 border rounded-3 mb-2 bg-light">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="fw-bold text-success"><i class="bi bi-calendar-check me-1"></i>Special Gram Sabha</span>
+                  <small class="text-muted">20 Nov 2026</small>
+                </div>
+                <div class="small text-secondary">
+                  Special meeting on 26th Nov at 10:30 AM at Panchayat Hall.
+                </div>
+              </li>
+              <li class="list-group-item p-3 border rounded-3 bg-light">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="fw-bold text-warning"><i class="bi bi-patch-exclamation me-1"></i>Crop Insurance Reminder</span>
+                  <small class="text-muted">18 Nov 2026</small>
+                </div>
+                <div class="small text-secondary">
+                  Last date to enroll wheat and gram crops under PMFBY is 15th December.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Product Modal for Citizen -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title"><i class="bi bi-basket3 me-2"></i><span data-i18n="modalAddProductTitle">शेतकरी बाजारात उत्पादन जोडा</span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="handleProductAdd(event)">
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductName">उत्पादनाचे नाव</label>
+              <input type="text" id="prdName" class="form-control" placeholder="उदा. लॅपटॉप किंवा ताजी भाजी" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formProductPrice">किंमत (₹)</label>
+                <input type="number" id="prdPrice" class="form-control" placeholder="उदा. 250" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-semibold" data-i18n="formProductUnit">प्रमाण / एकक</label>
+                <input type="text" id="prdUnit" class="form-control" placeholder="उदा. प्रति किलो किंवा प्रति नग" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductCategory">वर्गवारी (Category)</label>
+              <select id="prdCategory" class="form-select">
+                <option value="Vegetables">Vegetables (भाजीपाला)</option>
+                <option value="Fruits">Fruits (फळे)</option>
+                <option value="Dairy">Dairy & Ghee (तूप व दुग्ध)</option>
+                <option value="Electronics">Electronics & Laptop (लॅपटॉप)</option>
+                <option value="Handicrafts">Handicrafts (हस्तकला)</option>
+                <option value="Farm Produce">Farm Produce (शेतीमाल)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="formProductDesc">वर्णन (Description)</label>
+              <textarea id="prdDesc" class="form-control" rows="2" placeholder="उत्पादनाची वैशिष्ट्ये सांगा..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100 fw-bold" data-i18n="formProductSubmitBtn">बाजारात प्रकाशित करा</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let currentUser = null;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      currentUser = window.villageDB.getCurrentUser();
+      if (!currentUser || currentUser.role !== "citizen") {
+        currentUser = window.villageDB.getDB().citizens[0];
+        window.villageDB.setCurrentUser(currentUser, "citizen");
+      }
+
+      populateUserProfile();
+      setupSidebarNavigation();
+      renderAllCitizenData();
+
+      // Listen for language change to update all dynamic cards immediately
+      window.addEventListener("languageChanged", function () {
+        renderAllCitizenData();
+      });
+    });
+
+    function renderAllCitizenData() {
+      renderMyComplaints();
+      renderSchemes();
+      renderNotices();
+      renderMandiRates();
+      renderMarketplace();
+      renderForms();
+      renderEmergency();
+    }
+
+    function toggleSidebar() {
+      document.getElementById("dashboardSidebar").classList.toggle("show");
+    }
+
+    function populateUserProfile() {
+      if (!currentUser) return;
+      document.getElementById("sidebarUserName").textContent = currentUser.name;
+      document.getElementById("sidebarUserWard").textContent = currentUser.ward;
+      if (currentUser.photo) {
+        document.getElementById("sidebarAvatar").src = currentUser.photo;
+        document.getElementById("cardUserPhoto").src = currentUser.photo;
+      }
+
+      document.getElementById("cardUserName").textContent = currentUser.name;
+      document.getElementById("cardUserMobile").innerHTML = `<i class="bi bi-telephone me-1"></i>+91 ${currentUser.mobile}`;
+      document.getElementById("cardUserWard").innerHTML = `<i class="bi bi-geo-alt me-1"></i>${currentUser.ward}, ${currentUser.houseNo}`;
+      document.getElementById("cardUserId").textContent = currentUser.id;
+
+      document.getElementById("profName").textContent = currentUser.name;
+      document.getElementById("profMobile").textContent = currentUser.mobile;
+      document.getElementById("profEmail").textContent = currentUser.email;
+      document.getElementById("profOccupation").textContent = currentUser.occupation || "Farmer / शेतकरी";
+      document.getElementById("profWard").textContent = currentUser.ward;
+      document.getElementById("profHouseNo").textContent = currentUser.houseNo;
+      document.getElementById("profRegDate").textContent = currentUser.registeredOn || "15 Jan 2026";
+    }
+
+    function setupSidebarNavigation() {
+      const links = document.querySelectorAll(".sidebar-nav-link");
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetTab = this.getAttribute("data-tab");
+          switchTab(targetTab);
+        });
+      });
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll(".sidebar-nav-link").forEach(l => l.classList.remove("active"));
+      const activeLink = document.querySelector(`.sidebar-nav-link[data-tab="${tabName}"]`);
+      if (activeLink) activeLink.classList.add("active");
+
+      document.querySelectorAll(".tab-pane-custom").forEach(pane => pane.classList.add("d-none"));
+      const targetPane = document.getElementById(`tab-${tabName}`);
+      if (targetPane) targetPane.classList.remove("d-none");
+
+      const titleEl = document.getElementById("currentSectionTitle");
+      if (activeLink) {
+        titleEl.textContent = activeLink.querySelector("span").textContent;
+      }
+      document.getElementById("dashboardSidebar").classList.remove("show");
+    }
+
+    function previewComplaintPhoto(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById("cmpPhotoPreviewImg").src = e.target.result;
+          document.getElementById("cmpPhotoPreview").classList.remove("d-none");
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function handleNewComplaintSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById("cmpTitle").value.trim();
+      const category = document.getElementById("cmpCategory").value;
+      const ward = document.getElementById("cmpWard").value.trim();
+      const landmark = document.getElementById("cmpLandmark").value.trim();
+      const desc = document.getElementById("cmpDesc").value.trim();
+      const priority = document.getElementById("cmpPriority").value;
+      const photoImg = document.getElementById("cmpPhotoPreviewImg").src;
+
+      const newComplaint = window.villageDB.addComplaint({
+        citizenId: currentUser.id,
+        citizenName: currentUser.name,
+        citizenMobile: currentUser.mobile,
+        category,
+        title,
+        description: desc,
+        ward,
+        landmark,
+        priority,
+        photo: photoImg || "https://images.unsplash.com/photo-1584467735815-f778f274e296?w=600&auto=format&fit=crop&q=80"
+      });
+
+      window.villageApp.showToast(`Complaint ID ${newComplaint.id} submitted successfully!`, "success");
+      e.target.reset();
+      document.getElementById("cmpPhotoPreview").classList.add("d-none");
+      renderMyComplaints();
+      switchTab("my-complaints");
+    }
+
+    function renderMyComplaints(filterStatus = "all") {
+      const container = document.getElementById("myComplaintsList");
+      if (!container) return;
+
+      let list = window.villageDB.getComplaints({ citizenId: currentUser.id });
+      if (filterStatus !== "all") {
+        list = list.filter(c => c.status.toLowerCase() === filterStatus.toLowerCase());
+      }
+
+      document.getElementById("userComplaintCount").textContent = list.length;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <i class="bi bi-inbox fs-1 text-muted"></i>
+            <p class="text-muted mt-2">No complaints found.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(c => {
+        const title = window.tData(c, 'title');
+        const desc = window.tData(c, 'description');
+        const remarksLabel = window.t('officerRemarksLabel');
+        const timelineTitle = window.t('trackingTimelineTitle');
+
+        return `
+          <div class="col-md-6">
+            <div class="card h-100 border rounded-3 shadow-sm overflow-hidden">
+              <div class="card-header bg-light d-flex justify-content-between align-items-center py-2">
+                <span class="fw-bold text-primary">${c.id}</span>
+                ${window.villageApp.formatStatusBadge(c.status)}
+              </div>
+              <div class="card-body p-3">
+                <h6 class="fw-bold mb-1">${title}</h6>
+                <div class="small text-muted mb-2"><i class="bi bi-tag me-1"></i>${window.tCategory(c.category)} | ${c.ward}</div>
+                <p class="small text-secondary mb-3">${desc}</p>
+                
+                <div class="p-2 bg-light rounded-2 border small mb-3">
+                  <strong>${remarksLabel}</strong> ${c.adminRemarks || 'Under verification.'}
+                </div>
+
+                <h6 class="small fw-bold border-bottom pb-1 mb-2">${timelineTitle}</h6>
+                <div class="timeline-track ps-1">
+                  ${(c.timeline || []).map(t => `
+                    <div class="timeline-step completed">
+                      <div class="timeline-icon"><i class="bi bi-check"></i></div>
+                      <div class="timeline-content py-1">
+                        <div class="timeline-title small">${t.status}</div>
+                        <div class="timeline-time">${t.time}</div>
+                        <div class="timeline-note small">${t.note}</div>
+                      </div>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterMyComplaints(status, btn) {
+      document.querySelectorAll("#tab-my-complaints .btn-outline-primary, #tab-my-complaints .btn-outline-secondary, #tab-my-complaints .btn-outline-warning, #tab-my-complaints .btn-outline-success").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderMyComplaints(status);
+    }
+
+    function renderSchemes() {
+      const container = document.getElementById("citizenSchemesContainer");
+      if (!container) return;
+      const schemes = window.villageDB.getSchemes();
+      const applyBtnText = window.t('btnApplyOfficial');
+
+      container.innerHTML = schemes.map(s => {
+        const title = window.tData(s, 'title');
+        const desc = window.tData(s, 'description');
+
+        return `
+          <div class="col-md-6">
+            <div class="card h-100 border rounded-3 p-3 shadow-sm">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge bg-success-subtle text-success">${window.tCategory(s.category)}</span>
+                <small class="text-muted">${s.deadline}</small>
+              </div>
+              <h6 class="fw-bold text-primary mb-1">${title}</h6>
+              <div class="badge bg-warning-subtle text-dark p-2 my-2 text-start small border">
+                <i class="bi bi-cash-stack me-1"></i>${s.financialBenefit}
+              </div>
+              <p class="small text-muted mb-2">${desc}</p>
+              <div class="mt-auto">
+                <a href="${s.officialLink}" target="_blank" class="btn btn-outline-primary btn-sm w-100">
+                  ${applyBtnText} <i class="bi bi-box-arrow-up-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderNotices() {
+      const container = document.getElementById("citizenNoticesContainer");
+      if (!container) return;
+      const notices = window.villageDB.getNotices();
+      const issuedByText = window.t('issuedByLabel');
+      const downloadText = window.t('btnDownloadNoticeCopy');
+
+      container.innerHTML = notices.map(n => {
+        const title = window.tData(n, 'title');
+        const content = window.tData(n, 'content');
+
+        return `
+          <div class="notice-item ${n.priority === 'Urgent' ? 'urgent' : ''}">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <span class="badge ${n.priority === 'Urgent' ? 'bg-danger' : 'bg-primary'} mb-1">${window.tCategory(n.category)}</span>
+              <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>${n.date}</small>
+            </div>
+            <h6 class="fw-bold mb-1">${title}</h6>
+            <p class="small text-secondary mb-2">${content}</p>
+            <div class="d-flex justify-content-between align-items-center small text-muted pt-2 border-top">
+              <span>${issuedByText} <strong>${n.issuedBy}</strong></span>
+              <button class="btn btn-sm btn-outline-secondary py-0" onclick="alert('Downloading circular...')">
+                <i class="bi bi-download me-1"></i>${downloadText}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderMandiRates() {
+      const tbody = document.getElementById("mandiRatesTable");
+      if (!tbody) return;
+      const rates = window.villageDB.getDB().agricultureData.mandiRates;
+      tbody.innerHTML = rates.map(r => {
+        const crop = window.tData(r, 'crop');
+        return `
+          <tr>
+            <td class="fw-bold">${crop}</td>
+            <td>${r.minPrice}</td>
+            <td>${r.maxPrice}</td>
+            <td class="text-success fw-bold">${r.avgPrice}</td>
+            <td>${window.villageApp.formatTrendBadge(r.trend)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderMarketplace() {
+      const container = document.getElementById("citizenMarketplaceContainer");
+      if (!container) return;
+      const products = window.villageDB.getProducts();
+      const btnContact = window.t('btnContactWhatsApp');
+
+      container.innerHTML = products.map(p => {
+        const accurateImg = window.resolveProductImage(p.productNameEn || p.productNameMr, p.category, p.image);
+        const pName = window.tData(p, 'productName');
+        const pDesc = window.tData(p, 'description');
+        const btnContact = window.t('btnContactWhatsApp');
+
+        return `
+          <div class="col-sm-6 col-lg-4">
+            <div class="product-card p-3 d-flex flex-column h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-success-subtle text-success fw-semibold">${window.tCategory(p.category)}</span>
+                <span class="badge bg-light text-secondary border small">${p.sellerWard}</span>
+              </div>
+              <h6 class="fw-bold mb-1 text-primary text-truncate" title="${pName}">${pName}</h6>
+              <div class="small text-muted mb-1"><i class="bi bi-person me-1"></i>${p.sellerName}</div>
+              <div class="product-price mb-2">₹${p.price} <span class="fs-6 text-muted fw-normal">${p.unit}</span></div>
+              <p class="small text-secondary mb-3 flex-grow-1 text-truncate-2" title="${pDesc}">${pDesc}</p>
+              
+              <!-- Product Image placed directly below text and description -->
+              <div class="product-img-wrap mb-3 shadow-sm">
+                <img src="${accurateImg}" alt="${pName}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80'">
+              </div>
+
+              <div class="mt-auto">
+                <a href="https://wa.me/${p.sellerPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I saw your product ' + pName + ' on Smart Village Platform.')}" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-semibold">
+                  <i class="bi bi-whatsapp me-1"></i>${btnContact}
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderForms() {
+      const container = document.getElementById("citizenFormsContainer");
+      if (!container) return;
+      const forms = window.villageDB.getForms();
+      const printBtnText = window.t('btnPrintOfficialForm');
+
+      container.innerHTML = forms.map(f => {
+        const title = window.tData(f, 'title');
+        return `
+          <div class="col-md-6">
+            <div class="card h-100 border rounded-3 p-3 shadow-sm">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary-subtle text-primary">${f.code}</span>
+                <span class="badge bg-warning-subtle text-dark border">Fee: ${f.fee}</span>
+              </div>
+              <h6 class="fw-bold mb-1">${title}</h6>
+              <p class="small text-muted mb-2">${f.description}</p>
+              <div class="small text-secondary mb-3">
+                <div><strong>Time:</strong> ${f.processingTime}</div>
+                <div><strong>Docs:</strong> ${f.requiredDocs}</div>
+              </div>
+              <div class="mt-auto d-flex gap-2">
+                <button class="btn btn-success btn-sm flex-grow-1" onclick="printOfficialForm('${f.code}', '${title}')">
+                  <i class="bi bi-printer me-1"></i>${printBtnText}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderEmergency() {
+      const container = document.getElementById("citizenEmergencyContainer");
+      if (!container) return;
+      const contacts = window.villageDB.getEmergencyContacts();
+
+      container.innerHTML = contacts.map(c => {
+        const role = window.tData(c, 'role');
+        return `
+          <div class="col-sm-6 col-lg-3">
+            <div class="p-3 bg-white border border-danger-subtle rounded-3 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span class="badge bg-danger-subtle text-danger mb-1">${role}</span>
+                <h6 class="fw-bold mb-1">${c.name}</h6>
+                <div class="small text-muted">${c.timing}</div>
+              </div>
+              <a href="tel:${c.phone}" class="btn btn-danger btn-sm w-100 fw-bold mt-3">
+                <i class="bi bi-telephone-fill me-1"></i>${c.phone}
+              </a>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openAddProductModal() {
+      new bootstrap.Modal(document.getElementById("addProductModal")).show();
+    }
+
+    function handleProductAdd(e) {
+      e.preventDefault();
+      const name = document.getElementById("prdName").value.trim();
+      const price = document.getElementById("prdPrice").value.trim();
+      const unit = document.getElementById("prdUnit").value.trim();
+      const category = document.getElementById("prdCategory").value;
+      const desc = document.getElementById("prdDesc").value.trim();
+
+      window.villageDB.addProduct({
+        sellerName: currentUser.name,
+        sellerPhone: currentUser.mobile,
+        sellerWard: currentUser.ward,
+        productName: name,
+        price,
+        unit,
+        category,
+        description: desc
+      });
+
+      window.villageApp.showToast("Product listed in Kisan Bazar!", "success");
+      bootstrap.Modal.getInstance(document.getElementById("addProductModal")).hide();
+      renderMarketplace();
+    }
+
+    function printOfficialForm(code, title) {
+      const printWindow = window.open("", "_blank");
+      printWindow.document.write(`
+        <html>
+        <head>
+          <title>${code} - ${title}</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+          <style>
+            body { font-family: 'Noto Sans Devanagari', sans-serif; padding: 40px; }
+            .letterhead { border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 30px; }
+            .seal-box { width: 100px; height: 100px; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-top: 20px; }
+          </style>
+        </head>
+        <body onload="window.print()">
+          <div class="letterhead text-center">
+            <h6 class="fw-bold mb-1">Government of Maharashtra | Rural Development Dept.</h6>
+            <h2 class="fw-bold mb-1">Gram Panchayat Shivneri</h2>
+            <div>Tal. Junnar, Dist. Pune - 410502 | Email: grampanchayat.shivneri@gov.in</div>
+            <div class="small text-muted mt-1">ISO 9001:2015 Certified Smart Village</div>
+          </div>
+
+          <div class="d-flex justify-content-between mb-4">
+            <div>Reference No: GP/SHIV/2026/F-${Math.floor(1000 + Math.random() * 9000)}</div>
+            <div>Date: ${new Date().toLocaleDateString()}</div>
+          </div>
+
+          <div class="text-center my-4">
+            <h4 class="fw-bold text-decoration-underline">${title} (${code})</h4>
+          </div>
+
+          <div class="my-4" style="line-height: 2;">
+            <p>This is to certify that the applicant <strong>${currentUser.name}</strong>, residing at <strong>${currentUser.ward}, House No. ${currentUser.houseNo}</strong>, Village Shivneri, Taluka Junnar, Dist Pune is a registered permanent resident and has submitted the necessary legal documents.</p>
+            <p>The application has been verified against the Gram Panchayat official records and is approved.</p>
+          </div>
+
+          <div class="row mt-5 pt-5">
+            <div class="col-4 text-center">
+              <div class="seal-box mx-auto">Office Seal<br>(Panchayat Stamp)</div>
+            </div>
+            <div class="col-4 text-center">
+              <br><br><br>
+              <strong>Signature</strong><br>Applicant
+            </div>
+            <div class="col-4 text-center">
+              <br><br><br>
+              <strong>Gram Sevak / VDO</strong><br>Gram Panchayat Shivneri
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+  </script>
+</body>
+</html>
